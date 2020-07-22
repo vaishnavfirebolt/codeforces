@@ -1,0 +1,38 @@
+package binaryTrees;
+
+
+public class maxBranchSum {
+	
+	final class Node{
+		int data;
+		Node left;
+		Node right;
+		Node(int data){
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+		
+	}
+
+	public static int maxBranchSum1(Node node , int result) {
+		if(node == null) return 0;
+		
+		int left = maxBranchSum1(node.left , result);
+		int right = maxBranchSum1(node.right , result);
+		
+		int maxStraight = Math.max(Math.max(left,right)+ node.data, node.data);
+		int maxCase2 = Math.max(maxStraight, left + right + node.data);
+		result = Math.max(result , maxCase2);
+		
+		return maxStraight ;
+		
+		
+	}
+	public static void main(String[] args) {
+//		int result = Integer.MIN_VALUE;
+//	
+//		maxBranchSum1(root , result );
+//				
+	}
+}
