@@ -1,0 +1,50 @@
+package binaryTrees;
+
+public class rightSiblingTree {
+
+	class Node{
+		int data;
+		Node left;
+		Node right;
+		Node(int data){
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}	
+		
+	}
+	public static Node rightsiblingtree(Node root) {
+		mutate(root , null , false);
+		return root;
+	}
+	private static void mutate(Node node, Node parent, boolean isLeftChild) {
+		
+		if(node == null) return;
+		
+		Node left = node.left ; 
+		Node right = node.right;
+		
+		mutate(left, node, true);
+		if(parent == null) {
+			node.right = null;
+		}
+		else if(isLeftChild) {
+				node.right = parent.right; 
+			}
+		else {
+				if(parent.right == null) {
+					node.right = null;
+				}else {
+					node.right = parent.right.left;
+				}
+			}
+		
+		
+		mutate(right , node ,false);
+		
+		
+		
+		
+	}
+	
+}
