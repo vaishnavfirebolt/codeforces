@@ -1,0 +1,32 @@
+package dynamicProgramming;
+
+public class LevensheinDistance {
+
+	public static void main(String[] args) {
+		
+		String from = "abc" ; 
+		String to = "yabd" ; 
+		
+		int table[][] = new int[from.length() +1][to.length() + 1];
+		
+		for(int row = 0 ; row < table.length ; row++) {
+			for(int col = 0 ; col  < table[0].length ; col++) {
+				if(row == 0) {
+					table[row][col ] = col;
+				}else if(col == 0) {
+					table[row][col] = row;
+				}else if(from.charAt(row -1) == to.charAt(col -1)) {
+					table[row][col ] = table[row -1][col -1];
+				}else {
+					table[row][col] =1 +  Math.min(Math.min(table[row -1][col], table[row -1][col -1] ), table[row][col-1]);
+				}
+			}
+		}
+		for(int row = 0 ; row < table.length ; row++) {
+			for(int col = 0 ; col  < table[0].length ; col++) {
+				System.out.print(table[row][col] + " ");
+			}
+			System.out.println();}
+	}
+
+}
