@@ -1,0 +1,26 @@
+package dynamicProgramming;
+
+import java.util.Arrays;
+
+public class MinCoins {
+
+	public static void main(String[] args) {
+		
+		
+		int denoms[] = {1,2,4}; 
+		int target = 6;
+		
+		int res[] = new int[target +1];
+		Arrays.fill(res, Integer.MAX_VALUE);
+		res[0] = 0;
+		
+		for(int denom : denoms) {
+			for(int i = 0  ; i < res.length ; i++ ) {
+				if(denom <= i) {
+					res[i] = Math.min(res[i], res[i - denom] +1);
+				}
+			}
+		}System.out.println(res[res.length -1]);
+	}
+
+}
