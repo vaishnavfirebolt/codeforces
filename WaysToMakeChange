@@ -1,0 +1,24 @@
+package dynamicProgramming;
+
+public class WaysToMakeChange {
+
+	public static void main(String[] args) {
+
+		int denoms[] = {1, 5 ,10,25};
+		int target = 10;
+		
+		int res[] = new int[target + 1];
+		
+		res[0] = 1;
+		
+		for(int j = 0 ; j < denoms.length ; j++){
+			for(int i = 1; i < res.length ; i++) {
+				if(denoms[j] <= i) {
+					res[i] += res[i - denoms[j]]; 
+				}
+			}
+		}
+		System.out.println( res[res.length -1]);
+	}
+
+}
