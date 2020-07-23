@@ -1,0 +1,24 @@
+package dynamicProgramming;
+
+import java.util.Arrays;
+
+public class maxSumWithoutAdjacent {
+
+	public static void main(String[] args) {
+		
+		int a[] = {7,10,12,7,9,14};
+		
+		int res[] = new int[a.length ] ;
+		Arrays.fill(res, Integer.MIN_VALUE);
+		
+		res[0] = a[0];
+		res[1] = Math.max(a[0], a[1]);
+		
+		for(int i = 2 ; i < a.length ; i++) {
+			res[i] = Math.max(res[i-2]+ a[i] , res[i-1]);
+		}
+
+		System.out.println(res[a.length - 1]);
+	}
+
+}
