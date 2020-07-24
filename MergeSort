@@ -1,0 +1,60 @@
+package sorting;
+
+public class mergeSort {
+	
+	public static void mergesort(int[] a) {
+		
+		if(a.length > 0) {
+			int firsthalflength = a.length/2;
+			int []firsthalf = new int[firsthalflength] ;
+			System.arraycopy(a,0,firsthalf,0,a.length/2);
+			mergesort(firsthalf);
+			
+			int secondhalflength = a.length - (a.length/2);
+			int[] secondhalf = new int[secondhalflength];
+			System.arraycopy(a, a.length/2, secondhalf, 0, secondhalflength);
+			mergesort(secondhalf);
+			
+			merge(a,firsthalf,secondhalf);
+			
+			
+		}
+		
+	}
+
+	private static void merge(int[] a ,int[] firsthalf, int[] secondhalf) {
+		int curr1 =0;
+		int curr2 = 0;
+		int curr3 = 0;
+		
+		while(curr2 != firsthalf.length && curr3 != secondhalf.length) {
+			if(firsthalf[curr2]<secondhalf[curr3]) {
+				a[curr1++] = firsthalf[curr2++];
+			}else {
+				a[curr1++] = secondhalf[curr3++];
+			}
+		}
+		if(curr2!= firsthalf.length) {
+			while(curr2!= firsthalf.length)
+			a[curr1++] = firsthalf[curr2++];
+		}
+		else if (curr3 != secondhalf.length) {
+			while(curr3 != secondhalf.length)
+			a[curr1++] = secondhalf[curr3++];
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		
+		int a[] = {54,54545,5,5,651,21245,42,3,76,4,987,9,849,7};
+		
+		mergesort(a);
+		for(int item : a) {
+			System.out.println(item);
+		}
+
+
+	}
+
+}
