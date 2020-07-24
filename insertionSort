@@ -1,0 +1,29 @@
+package sorting;
+
+public class insertionsort {
+
+	public static void main(String[] args) {
+		
+        int a[] = {59,569,5,5595,65959,5,95,9,989,98,9899,956,65,65,4,1,21,2,12,12,23,26,1};
+		
+		int n = a.length; 
+		
+		for(int i = 1; i < n ; i++) {
+			int j = i -1;
+			while(j >= 0) {
+				if(a[j]>a[j+1]) {
+					int temp = a[j];
+					a[j] = a[j+1];
+					a[j+1] = temp;
+				}
+				j--;
+			}
+		}
+		for(int item :a) {
+			System.out.println(item);
+		
+		
+
+	}
+
+}}
