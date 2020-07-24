@@ -1,0 +1,29 @@
+package sorting;
+
+public class selectionSort {
+
+	public static void main(String[] args) {
+		 
+		int a[] = {59,569,5,5595,65959,5,95,9,989,98,9899,956,65,65,4,1,21,2,12,12,23,26,1};
+		
+		int n = a.length; 
+		
+		for(int i = 0 ; i < n; i++) {
+			int minIndex = i;
+			for(int j = i ; j < n; j++) {
+				if(a[j] < a[minIndex]) {
+					minIndex = j;
+				}
+				
+			}
+			int temp = a[i];
+			a[i] = a[minIndex];
+			a[minIndex] = temp;
+		}
+		for(int item : a) {
+			System.out.println(item);
+		}
+
+	}
+
+}
