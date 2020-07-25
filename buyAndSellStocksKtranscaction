@@ -1,0 +1,33 @@
+package vaishnav.projects;
+
+public class buyAndSellStocksKtranscaction {
+
+	public static void main(String[] args) {
+		
+		int[] a = {5,11,3,50,60,90};
+		
+		int k = 2;
+		
+		int[][] table = new int[k+1][a.length + 1];
+		
+		for(int row = 0 ; row < table.length ; row++) {
+			for(int col = 0 ; col < table[0].length ; col++) {
+				if(row == 0 || col == 0) {
+					table[row][col] = 0;
+					continue;
+				}
+				int maxPreviousProfit = Integer.MIN_VALUE;
+				for(int i = 1 ; i < col ; i++) {
+					int j = -a[i-1] + table[row -1][i];
+					maxPreviousProfit = Math.max(maxPreviousProfit,j);
+				}
+				table[row][col] = Math.max(table[row][col-1], a[col-1] + maxPreviousProfit);
+			}
+		}
+		System.out.println(table[k][a.length]);
+		
+		
+
+	}
+
+}
