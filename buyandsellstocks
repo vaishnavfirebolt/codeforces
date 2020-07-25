@@ -1,0 +1,21 @@
+package vaishnav.projects;
+
+public class buyandsellstocks {
+
+	public static void main(String[] args) {
+		
+		int a[] = {310,315,275,295,260,270,290,230,255,250};
+		
+		int maxProfit = 0;
+		int  min = a[0];
+		
+		for(int i = 1 ; i < a.length ; i++) {
+			if(a[i] > min) maxProfit = Math.max(maxProfit, a[i] - min);
+			else {
+				min = a[i];
+			}
+		}
+		System.out.println(maxProfit);
+	}
+
+}
