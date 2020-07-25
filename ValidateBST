@@ -1,0 +1,30 @@
+package binaryTree;
+
+public class validateBinaryTree {
+
+	public class Node{
+		int data  = Integer.MAX_VALUE ; 
+		Node left;
+		Node right ;
+		Node(int data){
+			this.data = data ; 
+			this.right = null ; 
+			this.left = null ; 
+		}
+	}
+	
+	public static boolean validateBST(Node root ) {
+		return isBST(root , Integer.MAX_VALUE , Integer.MIN_VALUE);		
+	}
+	
+	public static boolean isBST(Node root, int maxValue, int minValue) {
+		if(root == null) return true;
+		
+		if(root.data < minValue || root.data > maxValue) {
+			return false;
+		}
+		boolean isleftvalid = isBST(root.left, root.data, minValue);
+		return isleftvalid || isBST(root.right, maxValue, root.data); 
+	}
+
+}
