@@ -1,0 +1,37 @@
+package binaryTrees;
+
+public class nodeDepths {
+
+	class Node{
+		int data;
+		Node left;
+		Node right;
+		Node(int data){
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}	
+		
+	}
+	
+	public static int nodedepths(Node root) {
+		int depthssum = 0;
+		int currentDepth = 0;
+		nodedepth(root , depthssum , currentDepth);
+		return depthssum ; 
+	}
+
+	private static void nodedepth(Node node, int sum , int currentDepth) {
+		if(node == null) return;
+		sum = sum + currentDepth ;
+		nodedepth(node.left, sum, currentDepth+1);
+		nodedepth(node.right , sum , currentDepth +1);
+	}
+	
+	// or simply it can be done this way
+	public static int nodedepth(Node node , int depths) {
+		if(node == null) return 0;
+		return depths + nodedepth(node.left , depths +1) + nodedepth(node.right , depths +1);
+				
+	}
+}
