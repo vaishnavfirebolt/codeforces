@@ -1,0 +1,42 @@
+package recurrsion;
+
+public class FloodFill {
+	
+	static void floodfill(int[][] arr) {
+		
+					callDfs(arr , 1 , 1);
+//					flood filling on 1,1 to 2 
+//					we can generalize it by taking previous colour as a parameter
+	//			changing all occurrences of connected 1 from 1,3 to 2
+		
+	}
+
+	private static void callDfs(int[][] arr, int row, int col) {
+		if(row < 0 || row >= arr.length || col <0 || col >= arr[0].length || arr[row][col] != 1) {
+			return;
+		}
+		arr[row][col] = 2;
+		callDfs(arr , row +1 , col);
+		callDfs(arr , row -1 , col);
+		callDfs(arr , row  , col+1);
+		callDfs(arr , row  , col-1);
+	}
+public static void main (String[] args) {
+	int a[][] = {
+			{0,0,1,1,0,1},
+			{1,1,1,0,0,0},
+			{0,0,0,0,1,0}
+	};
+	for(int row = 0 ; row < a.length ; row++) {
+		for(int col = 0 ; col < a[0].length ; col++) {
+			System.out.print(a[row][col] + " ");
+		}System.out.println();
+	}System.out.println();
+	floodfill(a);
+	for(int row = 0 ; row < a.length ; row++) {
+		for(int col = 0 ; col < a[0].length ; col++) {
+			System.out.print(a[row][col] + " ");
+		}System.out.println();
+	}
+}
+}
