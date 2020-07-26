@@ -1,0 +1,37 @@
+ package recurrsion;
+import java.util.*;
+public class Permutation {
+	
+	static void permutation(String s) {
+		perm(s , 0 , s.length() -1);
+		
+	}
+
+	private static void perm(String s, int leftPtr, int rightPtr) {
+		if(leftPtr == rightPtr) {System.out.println(s);return;}
+		 
+			for(int i = leftPtr ; i <= rightPtr ; i++) {
+				s = interchange(s,leftPtr , i);
+				perm(s , leftPtr+1, rightPtr);
+				s = interchange(s,leftPtr , i);
+			}
+		
+	}
+
+	private static String interchange(String s, int leftPtr, int i) {
+		char c[] = s.toCharArray();
+		char temp = c[i];
+		c[i] = c[leftPtr];
+		c[leftPtr] = temp;
+		return String.valueOf(c);
+		
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String s = sc.next();
+		permutation(s);
+		sc.close();
+	}
+
+}
