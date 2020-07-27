@@ -1,0 +1,45 @@
+package vaishnav.projects;
+
+public class quickSelect {
+
+	public static int quickselect(int arr[] , int k ) {
+		int pivot = arr[arr.length-1];
+		int ans = -1;
+		int low = 0;
+		int high = arr.length -2;
+		
+		while (low <= high) {
+			while(low<=high && arr[low] < pivot) {
+				low++;
+			}
+			while(low<=high && arr[low] > pivot) {
+				high--;
+			}
+			if(low == k) {
+				return arr[low];
+			}else {
+				int temp = arr[low];
+				arr[low] = pivot;
+				arr[arr.length -1] = temp;
+				
+				if(low < k-1) {
+					int a[] = new int[arr.length - low];
+					System.arraycopy(arr, low, a, 0, arr.length - low);
+				 ans = quickselect(a,k);
+				}else {
+					int a[]  = new int[low-1];
+					System.arraycopy(arr, 0	, a, 0,low-1);
+					ans =  quickselect(a,k);
+				}
+			}
+		}
+		return ans;
+	}
+	
+	public static void main(String[] args) {
+		int a[] = {1,3,2,4,8,5};
+		int k = 2;
+		System.out.println(quickselect(a,k));
+	}
+	
+}
