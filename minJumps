@@ -1,0 +1,27 @@
+package vaishnav.projects;
+
+import java.util.Arrays;
+
+public class minJumps {
+	
+	public static int minjumps(int a[]) {
+		int auxiliary[]  = new int[a.length];
+		Arrays.fill(auxiliary, Integer.MAX_VALUE);
+		auxiliary[0] = 0;
+		
+		for(int i = 1 ; i < a.length ; i++ ) {
+			for(int j = 0 ; j < i ; j++) {
+				if(j+a[j] >= i) {
+					auxiliary[i] = Math.min(auxiliary[i], auxiliary[j]+1);
+				}
+			}
+		}return auxiliary[a.length -1];
+	}
+
+	public static void main(String[] args) {
+			int a[] = {3,4,2,1,2,3,7,1,1,1,3};
+			System.out.println(minjumps(a));
+			
+	}
+
+}
