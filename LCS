@@ -1,0 +1,41 @@
+package vaishnav.projects;
+import java.util.*;
+
+public class LCS {
+
+	public static int Lcs(int a[]) {
+		int length = 1;
+		int finalLength = 1;
+		
+		Map<Integer,Boolean> map = new HashMap<>();
+		for(int item : a) {
+			map.put(item,false);
+		}
+		for(int i = 0 ; i < a.length ; i++ ) {
+			if(!map.get(a[i]))
+			{length = 1;
+			int k = a[i];
+			while(map.containsKey(k - 1)) {
+				length++;
+				map.put(k,true);
+				k = k-1;
+			}k = a[i];
+			while(map.containsKey(k+1)) {
+				length++;
+				map.put(k, true);
+				k++;
+			}
+			
+			}
+			finalLength = Math.max(finalLength,length);
+		}
+		return finalLength;
+	}
+	
+	
+	public static void main(String[] args) {
+		int a[]= {2,1,8,3,4,7,5,13,14,15,16,17,18,19,20,12,11,10};
+		System.out.println(Lcs(a));
+	}
+
+}
