@@ -1,0 +1,27 @@
+package vaishnav.projects;
+
+public class maxProductSubarray {
+	
+	public static int productSum(int a[]) {
+		int finalMax = a[0];
+		int currentMax = a[0];
+		int currentMin = a[0];
+		
+		for(int i = 1; i < a.length ; i++) {
+			int temp = currentMax;
+			currentMax = Math.max(Math.max(currentMax * a[i], currentMin * a[i])
+					,a[i] );
+			currentMin = Math.min(Math.min(temp * a[i], currentMin * a[i])
+					,a[i] );
+			if(currentMax > finalMax) finalMax = currentMax;
+			
+		}
+		return finalMax;
+	}
+
+	public static void main(String[] args) {
+		int a[ ] = {2,0,-3,-8,0,2};
+		System.out.println(productSum(a));
+	}
+
+}
