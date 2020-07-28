@@ -1,0 +1,59 @@
+package arrays;
+
+import java.util.Arrays;
+
+public class smallestDifference {
+	
+	public static int[] smallDifference(int[] numsArray1 , int[] numsArray2 ) {
+		if( numsArray1.length == 0||
+			numsArray1 == null ||
+			numsArray2.length == 0 ||  
+			numsArray2 == null){
+				return new int[] {-1,-1};			
+				}
+		
+		Arrays.sort(numsArray1);
+		Arrays.sort(numsArray2);
+		
+		int firstPtr = 0;
+		int secondPtr = 0;
+		int ans[] = new int[2];
+		int curr = Integer.MAX_VALUE;
+		int minDifference = Integer.MAX_VALUE;
+		
+		while(firstPtr != numsArray1.length && secondPtr != numsArray2.length) {
+			int one = numsArray1[firstPtr]	;
+			int two  = numsArray2[secondPtr];
+			
+			if(one > two) {
+				curr = one - two;
+				secondPtr++;
+			}
+			else if(two > one) {
+				curr = two -one;
+				firstPtr++;	
+			}else return new int[] {firstPtr,secondPtr };
+			
+			if(curr < minDifference) {
+				ans[0] = one;
+				ans[1] = two;
+				minDifference = curr;
+				
+			}
+		}
+		return ans;	
+		
+	}
+
+	public static void main(String[] args) {
+
+		int a[] = {5,45,4556,12,694,31};
+		int b[]= {446,51,32,978,94,23,1};
+		
+		int ans[] = smallDifference(a, b);
+		for(int item: ans) {
+			System.out.println(item);
+		}
+	}
+
+}
