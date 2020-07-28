@@ -1,0 +1,35 @@
+package vaishnav.projects;
+
+public class reverseArray {
+
+		public static int[] revfun(int[] a) {
+			if(a.length == 0) {
+				return new int[]{};
+			}
+			int firstPointer = 0;
+			int lastPointer = a.length - 1 ;
+			
+			while(firstPointer < lastPointer) {
+				int temp = a[firstPointer];
+				a[firstPointer] = a[lastPointer];
+				a[lastPointer] = temp;
+				firstPointer++;
+				lastPointer--;
+				
+			}
+			return a;
+		}
+		
+		
+	public static void main(String[] args) {
+		
+		int a[] = {4,5,7,8,3,1,5,9,4};
+		int c[] = revfun(a);
+		
+		for(int item : c) {
+			System.out.println(item);
+		}
+		
+	}
+	
+}
