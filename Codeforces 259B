@@ -1,0 +1,49 @@
+package codeforces;
+
+import java.util.*;
+
+public class Codeforces259B {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+
+		int sum =  0 ;
+		int arr[][] = new int[3][3];
+		for(int row = 0 ; row < arr.length ; row++ ) {
+			for(int col = 0 ; col < arr[0].length ; col++) {
+				int a = sc.nextInt();
+				arr[row][col] = a;
+				sum += a;
+			}
+		}
+		sum = sum/2;
+		int c = 0;
+		for(int i = 0 ; i  < 3 ; i++) {
+			if(i != 0) {
+				c += arr[0][i];
+			}
+		}arr[0][0] = sum - c;
+		c = 0;
+		for(int i = 0 ; i  < 3 ; i++) {
+			if(i != 1) {
+				c += arr[1][i];
+			}
+		}arr[1][1] = sum - c;
+		c = 0;
+		for(int i = 0 ; i  < 3 ; i++) {
+			if(i != 2) {
+				c += arr[2][i];
+			}
+		}arr[2][2] = sum - c;
+		for(int row = 0 ; row < arr.length ; row++ ) {
+			for(int col = 0 ; col < arr[0].length ; col++) {
+				System.out.print(arr[row][col] + " ");
+			}System.out.println();}
+		
+		
+		sc.close();
+
+	}
+
+}
