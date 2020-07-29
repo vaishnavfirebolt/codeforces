@@ -1,0 +1,29 @@
+package codeforces;
+
+import java.util.*;
+
+public class Codeforces446A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		
+		int p = n*a;
+		int q = (n/m)*b + (n%m) * a;
+		int r;
+		if(n%m == 0) r = q;
+		else r = ((n/m)+1)*b;
+	
+		
+		int ans = Math.min(Math.min(p, q), r);
+			
+		System.out.println(ans);
+		sc.close();
+
+	}
+
+}
