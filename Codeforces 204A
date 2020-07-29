@@ -1,0 +1,30 @@
+package codeforces;
+
+import java.util.Scanner;
+
+public class Codeforces204A {
+
+	    
+	    static long meth(long a){
+	        if(a < 10)return a;
+	        long p = a/10;
+	        p = p+8;
+	        long f = a; 
+	        while(f>=10) f/= 10;
+	        if (f <= a % 10) p++;
+	        return p;
+	    }
+	    
+	    public static void main(String[] args){
+	        Scanner sc = new Scanner(System.in);
+	        long a = sc.nextLong();
+	        long b = sc.nextLong();
+	   
+	        long ans = meth(b) - meth(a-1)  ;
+	        System.out.println(ans);
+	        
+	        sc.close();
+	    }
+	
+
+}
