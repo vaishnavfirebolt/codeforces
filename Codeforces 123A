@@ -1,0 +1,32 @@
+package day2;
+
+import java.util.*;
+
+public class Codeforces123A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		Map<Integer,Integer> map = new HashMap<>();
+		map.put(1, 0);
+		map.put(2, 0);
+		map.put(3, 0);
+		for(int i = 0 ; i  <n ; i++) {
+			int t = sc.nextInt();
+			map.put(t, map.get(t) +1);
+		}
+		int max = 0;
+		for(int i = 1 ; i < 4 ;i++) {
+			if(map.get(i)>max) {
+				max = map.get(i);
+			}
+		}
+		System.out.println((n - max));		
+				
+		
+		sc.close();
+
+	}
+
+}
