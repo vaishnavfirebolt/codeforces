@@ -1,0 +1,36 @@
+package day3;
+import java.util.*;
+public class Codeforces1384A {
+	
+	public static void print(char[] arr) {
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < arr.length ; i++) {
+			sb.append(arr[i]);
+		}System.out.println(sb);
+	}
+
+	public static void main(String[] args) {
+		
+	Scanner sc = new Scanner(System.in);
+	int n = sc.nextInt();
+	
+	for(int p = 0 ; p < n ; p++ ) {
+		
+		char[] arr = new char[200];
+		for(int i = 0 ; i < 200 ; i++) {
+			arr[i] = 'a';
+		}
+		print(arr);
+		int t = sc.nextInt();
+		for(int i = 0 ; i < t ; i++) {
+			int l = sc.nextInt();
+			arr[l] = (arr[l] == 'a' ? 'b' :'a');
+			print(arr);
+		}
+		
+	}
+	sc.close();
+	
+	}
+
+}
