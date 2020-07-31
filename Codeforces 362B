@@ -1,0 +1,38 @@
+package day3;
+import java.util.*;
+
+public class Codeforces362B {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		boolean valid = true;
+		Set<Integer> set = new HashSet<>();
+		
+		for(int i = 0 ; i < m ; i++ ) {
+			int l = sc.nextInt();
+			set.add(l);
+		}
+		if(set.contains(1) || set.contains(n)) {
+				valid = false;
+		}else {
+			for(int item : set) {
+				if(set.contains(item -1) && set.contains(item+ 1)) {
+					valid = false;
+					break;
+				}
+			}
+		}
+		if(valid) {
+			System.out.println("YES");
+		}else System.out.println("NO");
+				
+		
+		
+		
+		sc.close();
+
+	}
+
+}
