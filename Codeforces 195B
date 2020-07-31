@@ -1,0 +1,12 @@
+package day3;
+
+public class Codeforces195B {
+
+	public static void main(String[] args) {
+		int m = 3;
+		for(long p = 0; p < m; p++){
+			System.out.println(1 + (m - 1 + (((p + m) % 2) ==1 ? 1 : (-1)) * p) / 2);
+		}
+	}
+
+}
