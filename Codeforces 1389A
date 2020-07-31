@@ -1,0 +1,24 @@
+package day3;
+
+import java.util.Scanner;
+
+public class Codeforces1389A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt = 0 ; tt < t ;tt++) {
+			long l = sc.nextLong();
+			long r = sc.nextLong();
+			if(l*2 <= r) {
+				System.out.println(l +" "+ l* 2);
+			}else System.out.println("-1 -1");
+			
+		}
+		
+		
+		sc.close();
+	}
+
+}
