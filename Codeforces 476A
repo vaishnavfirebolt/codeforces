@@ -1,0 +1,25 @@
+package day4;
+
+import java.util.*;
+
+public class Codeforces476A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int minWays = n/2 + n%2;
+		if(m>n)System.out.println("-1");
+		else {
+			int ans = minWays % m == 0? minWays : minWays + m - (minWays % m);
+			System.out.println(ans);
+		}
+		
+		
+		
+		sc.close();
+
+	}
+
+}
