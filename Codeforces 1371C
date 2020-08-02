@@ -1,0 +1,24 @@
+package day5;
+
+import java.util.*;
+
+public class CD1371C {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		for(int i = 0 ; i < t ; i++) {
+		long a  = sc.nextLong(),b = sc.nextLong(),n = sc.nextLong(),m = sc.nextLong();
+		if(m>Math.min(a, b)) {
+			System.out.println("No");
+		}else {
+			if(a+b < n+m) {
+				System.out.println("No");
+			}else System.out.println("Yes");
+		}
+		}
+		sc.close();
+
+	}
+
+}
