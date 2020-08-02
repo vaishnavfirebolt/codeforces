@@ -1,0 +1,31 @@
+package day5;
+import java.util.*;
+public class CD1379B {
+
+	public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	
+	int t = sc.nextInt();
+	outer:for(int tt = 0 ;tt < t ;tt++) {
+		long l = sc.nextLong() , r =sc.nextLong() , m =sc.nextLong();
+		for(long a = l ; a <= r ;a++) {
+			long minNA = m/a;
+			long maxNA = minNA +1;
+			long min = minNA * a;
+			long max = maxNA * a;
+			long diff = m - min;
+			if(diff <= r-l && minNA > 0) {
+				System.out.println( a + " "+ r + " " +( r-diff));
+				continue outer;
+			}else if(max - m <= r-l) {
+				System.out.println(a + " " + l + " " + (l + max - m) );
+				continue outer;
+			}
+		}
+	}
+	
+	
+	sc.close();
+	}
+
+}
