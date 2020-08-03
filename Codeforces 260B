@@ -1,0 +1,71 @@
+package day6;
+import java.util.*;
+import java.util.Map.Entry;
+
+public class CD260B {
+	static String s;
+	static int countdays(int i) {
+		if(i == 2 )return 28;
+		else if(i == 1 || i ==3 || i == 5|| i == 7|| i == 8|| i == 10|| i == 12)return 31;
+		else return 30;
+	}
+	static boolean isValid(int i) {
+		if(s.charAt(i+2)!='-' || s.charAt(i+5)!='-')
+			return false;
+		try
+		{
+		int month = Integer.parseInt(s.substring(i+3,i+5));
+		if(month>12 || month<1 )
+			return false;
+ 
+ 
+		int day = Integer.parseInt(s.substring(i,i+2));
+		if(day<1 || day>countdays(month))
+			return false;
+ 
+		int year = Integer.parseInt(s.substring(i+6,i+10));
+		if(year>2015 || year<2013 )
+			return false;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+		return true;
+ 
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		s = sc.next();
+		Map<String,Integer> map = new HashMap<>();
+		for(int i = 0; i  < s.length()- 9 ; i++) {
+			if(isValid(i)) {
+				String pans = s.substring(i , i+10);
+				if(!map.containsKey(pans)) {
+					map.put(pans , 1);
+				}else {
+					map.put(pans , map.get(pans) +1);
+				}
+			}
+		}
+		String date = "";
+		int max = -1;
+		for(Entry<String, Integer> ent : map.entrySet())
+		{
+			if(ent.getValue()>max)
+				date = ent.getKey();
+			max = Math.max(max, ent.getValue());
+		}
+		System.out.println(date);
+		
+		
+		
+		
+		
+		
+		sc.close();
+
+	}
+
+}
