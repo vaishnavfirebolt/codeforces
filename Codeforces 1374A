@@ -1,0 +1,24 @@
+package day6;
+
+import java.util.Scanner;
+
+public class CD1374A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		for(int tt = 0 ; tt < t ;tt++) {
+			long x = sc.nextLong();
+			long y = sc.nextLong();
+			long n = sc.nextLong();
+			
+			long q = n/x;
+			long r = n%x;
+			if(r >= y)System.out.println((q * x) + y);
+			else System.out.println(((q-1)*x)+y);
+		}
+		sc.close();
+
+	}
+
+}
