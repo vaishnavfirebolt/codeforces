@@ -1,0 +1,31 @@
+package day8;
+
+import java.util.Scanner;
+
+public class CD1388B {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	
+		int t =sc.nextInt();
+		for(int tt = 0 ; tt  < t ;tt++) {
+			int n  = sc.nextInt();
+			if(n % 4 == 0) {
+				for(int i = 0 ; i < n - (n/4) ;i++) {
+					System.out.print("9");
+				}for(int i = 0 ; i < n/4 ;i++) {
+					System.out.print("8");
+				}System.out.println();
+			}else {
+				for(int i = 0 ; i < (n - (n/4)) -1 ;i++) {
+					System.out.print("9");
+				}for(int i = 0 ; i < n/4 +1 ;i++) {
+					System.out.print("8");
+				}System.out.println();
+			}
+		}
+		
+		sc.close();
+}
+
+}
