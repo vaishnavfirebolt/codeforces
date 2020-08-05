@@ -1,0 +1,46 @@
+package day9;
+import java.util.*;
+
+public class CD25A {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int a[] = new int[n];
+		for(int i =0 ; i < n ; i++) {
+			a[i] = sc.nextInt();
+		}boolean odd = false;
+		if(a[0] % 2 == a[1]%2) {
+			if(a[0] % 2 == 0) odd = false;
+			else odd = true;
+		}
+		else if(a[0] % 2 == a[2]%2) {
+			if(a[0] % 2 == 0) odd = false;
+			else odd = true;
+		}
+		else if(a[2] % 2 == a[1]%2) {
+			if(a[2] % 2 == 0) odd = false;
+			else odd = true;
+		}
+		
+		if(odd == false) {
+			for(int i = 0 ; i < n ; i++) {
+				if(a[i] % 2 == 1) {
+					System.out.println(i+1);
+					break;
+				}
+			}
+		}
+		if(odd == true) {
+			for(int i = 0 ; i < n ; i++) {
+				if(a[i] % 2 == 0) {
+					System.out.println(i+1);
+					break;
+				}
+			}
+		}
+		sc.close();
+	}
+
+}
