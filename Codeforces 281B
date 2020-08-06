@@ -1,0 +1,26 @@
+package day10;
+import java.util.*;
+
+public class CD281B {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		long x= sc.nextLong() , y = sc.nextLong() , n = sc.nextLong()	;
+		long a = -1 ; 
+		long b = 0;
+		for(int i = 1 ; i <=  n ; i++) {
+			long temp = i * x/y ;
+			if(i * x - temp * y > (temp + 1) * y - i * x) 
+				temp++;
+			if(a == -1 || Math.abs(a*y-x*b)*i > Math.abs(temp*y-x*i)*b){
+				a = temp ;
+				 b= i;
+			}
+		}
+		
+		
+		sc.close();
+	}
+
+}
