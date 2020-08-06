@@ -1,0 +1,37 @@
+package day10;
+import java.util.*;
+
+public class CD330A {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		
+		char a[][] = new char[n][m];
+		for(int i = 0 ;i < n ;i++) {
+			a[i]  = sc.next().toCharArray();
+		}
+		
+		int count = 0;
+		for(int i = 0 ;i < n ; i++) {
+			boolean found = false;
+			for(int j = 0 ; j < m ; j++ ) {
+				if(a[i][j] == 'S') found = true;
+			}if(found)count++;
+		}
+		int count2 = 0;
+		for(int i =0 ; i< m ;i++) {
+			boolean found = false;
+			for(int j = 0 ; j < n ;j++) {
+				if(a[j][i] == 'S') found =true;
+			}if(found)count2++;
+		}
+		System.out.println(((n -count) * m) + ((count) *  (m - count2)));	
+		
+		sc.close();
+	}
+
+}
