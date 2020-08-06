@@ -1,0 +1,36 @@
+package day9;
+import java.util.*;
+
+public class CD87A {
+	 static long gcd(long a, long b) 
+	    { 
+	    if (a == 0) 
+	        return b;  
+	    return gcd(b % a, a);  
+	    } 
+	      
+	    // method to return LCM of two numbers 
+	    static long lcm(long a, long b) 
+	    { 
+	        return (a*b)/gcd(a, b); 
+	    } 
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		long a= sc.nextLong();
+		long b = sc.nextLong();
+		
+		long c = lcm(a,b)/a - 1;
+		long d = lcm(a,b)/b -1;
+		if(a > b)c++;
+		else d++;
+		if(c>d)System.out.println("Dasha");
+		else if(c< d) System.out.println("Masha");
+		else System.out.println("Equal");
+		
+		sc.close();
+		
+	}
+
+}
