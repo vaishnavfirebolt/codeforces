@@ -1,0 +1,33 @@
+package day10;
+import java.util.*;
+
+public class CD750A {
+
+	public static void main(String[] args) {
+	
+	Scanner sc = new Scanner(System.in);
+	
+	int n = sc.nextInt();
+	int k = sc.nextInt();
+	sc.close();
+	int totaltime = 4*60 ; 
+	int timeleft = totaltime - k;
+	
+	int i;
+	for(i = 1 ; i<= n ; i++) {
+		int time = i * 5;
+		if(timeleft - time >=0) {
+			timeleft = timeleft - time;
+		}else break;
+	}
+      System.out.println(i -1);
+	
+	
+	
+	
+	
+	
+	
+	}
+	
+}
