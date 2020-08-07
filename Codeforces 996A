@@ -1,0 +1,33 @@
+package day10;
+import java.util.*;
+
+public class CD996A {
+
+	public static void main(String[] args) {
+				Scanner sc= new Scanner(System.in);
+				
+//				no need for dp here it can be done using greedy 
+				int target = sc.nextInt();
+				int count = 0;
+				count += target/100;
+				target = target%100;
+				
+				
+				count += target/20;
+				target = target%20;
+				
+				count += target/10;
+				target = target%10;
+				
+				count += target/5;
+				target = target%5;
+				
+				count += target/1;
+				target = target%1;
+				
+				System.out.println(count);
+				sc.close();
+	
+	}
+
+}
