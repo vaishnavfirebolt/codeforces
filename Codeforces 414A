@@ -1,0 +1,39 @@
+package day11;
+import java.util.*;
+
+public class CD414A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	
+		int n = sc.nextInt() ,  k  = sc.nextInt();
+		if(k < n / 2  || (n == 1 && k > 0)) System.out.println(-1);
+		else if(k == n/2) {
+			for(int i = 1 ; i <= n ; i++ ) {
+				System.out.print(i + " ");
+			}
+		}else if(n ==1 && k==0) {
+			System.out.println(0);
+		}
+		
+		else {
+			System.out.print((k - n/2 +1)+ " " + (2*(k - n/2 +1)) + " " );
+			if((k - n/2 +1) > n -2) {
+				for(int i = 1 ; i <= n - 2 ; i++ ) {
+					System.out.print(i + " ");
+				}
+			}
+			else {
+				for(int i = 1 ; i <= n - 2 ; i++ ) {
+					System.out.print( (2*(k - n/2 +1) + i) + " ");
+				}
+			}
+		}
+		
+		
+		
+		sc.close();
+
+	}
+
+}
