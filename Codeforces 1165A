@@ -1,0 +1,26 @@
+package day11;
+
+import java.util.*;
+
+public class CD1165A {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		char a[]  = new char[10000005];
+		long n = sc.nextLong() , x = sc.nextLong() , y = sc.nextLong();
+		a = sc.next().toCharArray();
+		
+		long count = 0 ;
+		
+		for(long i = 0 ; i  < x ; i++)
+		{
+			if(a[(int) (n -1 - i)]  != ( i == y? '1': '0')){
+				count++;
+			}
+		}
+		System.out.println(count);
+		sc.close();
+	}
+
+}
