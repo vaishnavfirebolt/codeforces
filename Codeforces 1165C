@@ -1,0 +1,28 @@
+package day12;
+import java.util.*;
+
+public class CD1165C {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+	
+		int n = sc.nextInt();
+		char[] a = new char[n];
+		a = sc.next().toCharArray();
+		List<Character> list = new ArrayList<>();
+		for(int i = 0 ; i < n ; i++) {
+			if(list.size() % 2 == 0 || list.get(list.size()-1) != a[i]) {
+				list.add(a[i]);
+			}
+		}
+		if(list.size() % 2 != 0) {
+			list.remove(list.size()-1);
+		}
+		System.out.println(n - list.size());
+		for(char c: list)System.out.print(c);
+		
+		sc.close();
+	}
+
+}
