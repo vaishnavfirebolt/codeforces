@@ -1,0 +1,43 @@
+package day12;
+import java.util.*;
+
+public class CD1389C {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int i =0 ; i < t ; i++) {
+			char a[] = sc.next().toCharArray();
+			int count[] = new int[10];
+			for(char c : a) {
+				count[c- '0']++;
+			}
+			Arrays.sort(count);
+			int maxLength = count[count.length - 1];
+			
+			for(int first = 0 ; first < 10 ;first++) {
+				for(int second = 0 ; second < 10 ;second++) {
+					int length = 0;
+					for(char c: a) {
+						if(length % 2 == 0) {
+							if((c - '0') == first)length++;
+						}else {
+								if((c - '0') == second) length++;
+							}
+					}
+					length -= length%2;
+					maxLength = Math.max(maxLength, length);
+					
+				}
+			}
+			
+			System.out.println(a.length - maxLength);
+			
+			
+		}
+		sc.close();
+	}
+
+}
