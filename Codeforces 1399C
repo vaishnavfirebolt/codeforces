@@ -1,0 +1,44 @@
+package day14;
+import java.util.*;
+import java.util.Map.Entry;
+
+
+public class CD1399C {
+		public static void main(String[] args) {
+				Scanner sc = new Scanner(System.in);
+			
+				int tt= sc.nextInt();
+				for(int t = 0 ; t < tt ; t++) {
+					int n = sc.nextInt();
+					int a[] = new int[n];
+					for(int i = 0; i < n; i++)a[i] = sc.nextInt();
+				Arrays.sort(a);
+				Map<Integer , Integer> map = new HashMap<>();
+				for(int i = 0 ; i < n ; i++) {
+					for(int j = n-1 ; j >= 0 ; j--) {
+						int p = i ;int q = j;int sum = a[i] + a[j];int count = 0;
+						while(p < q) {
+							if(a[p] + a[q] == sum) {count++;
+							p++ ; q--;}
+							else if(a[p] + a[q] > sum)q--;
+							else if(a[p] + a[q]  < sum)p++;
+						}
+						if(!map.containsKey(sum)) {
+							map.put(sum , count);
+						}else {
+							map.put(sum,Math.max(map.get(sum) , count));
+						}
+					}
+				}
+				int ans = 0;
+				for(Entry<Integer, Integer> item :map.entrySet()) {
+					ans = Math.max(ans , item.getValue());
+				}
+				System.out.println(ans);
+				
+				}
+				
+				sc.close();
+		}
+
+	}
