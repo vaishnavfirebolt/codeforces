@@ -1,0 +1,46 @@
+package day14;
+
+import java.util.*;
+import java.util.Comparator;
+
+public class Cd149C {
+	static class footballer{
+		int value;
+		int index ;
+		footballer(int a , int b){
+			this.value = a;
+			this.index =b ;
+		}
+	}
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		footballer a[] = new footballer[n];
+		for(int i = 0 ; i < n ; i++) {
+			a[i] = new footballer(sc.nextInt(), i);
+		}
+		
+		Arrays.sort( a, new Comparator<footballer>() {
+			public int compare(footballer one ,footballer two) {
+				return one.value - two.value;
+			}
+		});
+		int even = (int) Math.ceil((double) n / 2);
+		int odd = (int) Math.floor((double) n / 2);
+		System.out.println(even);
+		for (int i = 0; i < n; i += 2) {
+			System.out.print(a[i].index + 1 + " ");
+		}
+		System.out.println();
+		System.out.println(odd);
+		for (int i = 1; i < n; i += 2) {
+			System.out.print(a[i].index + 1 + " ");
+		}
+		System.out.println();
+	
+		sc.close();
+	}
+
+}
