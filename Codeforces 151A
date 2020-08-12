@@ -1,0 +1,18 @@
+package day16;
+import java.util.*;
+
+public class Codeforces151A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt(),  k = sc.nextInt() ,  l = sc.nextInt() , c = sc.nextInt(), d = sc.nextInt();
+		int p = sc.nextInt(), nl = sc.nextInt() ,  np = sc.nextInt();
+				
+		int ans = Math.min(Math.min(Math.min(Integer.MAX_VALUE, (k*l)/nl), c*d), p/(np))/n;
+		System.out.println(ans);
+		
+		sc.close();
+	}
+
+}
