@@ -1,0 +1,20 @@
+package day16;
+
+import java.util.Scanner;
+
+public class Codeforces1393A {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		int tt= sc.nextInt();
+		for(int t = 0 ; t < tt ; t++) {
+			int n = sc.nextInt();
+			System.out.println(n/2+1);
+		}
+		
+		sc.close();
+	}
+
+}
