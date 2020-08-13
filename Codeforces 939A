@@ -1,0 +1,48 @@
+package day17;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+//import java.util.*;
+
+public class Codeforces939A {
+	public static void main(String[] args) {
+		FastScanner fs = new FastScanner();
+		int  t = fs.nextInt();
+		int a[] = fs.readArray(t);
+		boolean ltriangle = false;
+		for(int i  = 0 ; i < t-2 ; i++) {
+			if(a[a[a[i ] - 1] -1] == i +1)ltriangle = true;
+		}
+		if(ltriangle)System.out.println("YES");
+		else System.out.println("NO");
+	}
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
