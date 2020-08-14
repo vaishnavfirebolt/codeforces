@@ -1,0 +1,55 @@
+package day18;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+//import java.util.*;
+
+public class Codeforces1398A {
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int  t = sc.nextInt();
+  outer: for(int tt= 0 ; tt < t ;tt++) {
+			int n = sc.nextInt();
+			int a[] = sc.readArray(n);
+			int max = a[0] + a[1];
+			for(int i =2 ; i < n ; i++) {
+				if(a[i] >= max) {
+					System.out.println( 1 + " " + 2 + " " + (i+1));
+					continue outer;
+				}
+			}
+			System.out.println(-1);
+		}
+	
+	}
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
