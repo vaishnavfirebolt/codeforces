@@ -1,0 +1,95 @@
+package day18;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+import java.util.*;
+
+public class Codefroces1395B {
+	
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int n =sc.nextInt() , m = sc.nextInt(),a = sc.nextInt(),b = sc.nextInt();
+		List<String> list = new ArrayList<>();
+		if(n %2 ==0) {
+			for(int i = 0 ; i < n ;i++) {
+				if(i % 2 ==0) {
+					for(int j = 0 ; j < m ; j++) {
+						list.add((i+1) + " "+ (j+1));
+					}
+				}else {
+					for(int j = m-1 ; j >=0 ; j--) {
+						list.add((i+1) + " " + (j+1));
+					}
+				}
+			}
+			int idx = list.indexOf(a +" "+ b);
+			int count = list.size();
+			for(int i = 0 ; i < count ; i++){
+			System.out.println(list.get(idx));
+			idx = (idx +1)% count;
+			}
+		}else {
+			for(int i = 1 ; i < n ;i++) {
+				if(i % 2 ==0) {
+					for(int j = 0 ; j < m ; j++) {
+						list.add((i+1) + " "+ (j+1));
+					}
+				}else {
+					for(int j = m-1 ; j >=0 ; j--) {
+						list.add((i+1) + " " + (j+1));
+					}
+				}
+			}
+			int idx = list.indexOf(a +" "+ b);
+			int count = list.size();
+			for(int i = 0 ; i < count ; i++){
+			System.out.println(list.get(idx));
+			idx = (idx +1)% count;
+			}
+			int o;
+			if(a % 2 == 0) {
+				 o = b+1;
+			}else o = b-1;
+			for(int q = 0 ; q < m ; q++) {
+				System.out.println(1+ " " + o );
+				o = o+1;
+				if(o == m+1) {
+					o = 1;
+				}
+			}
+			
+		}
+		
+		
+	}
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
