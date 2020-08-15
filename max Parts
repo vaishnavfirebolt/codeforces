@@ -1,0 +1,64 @@
+package dynamicProgramming;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ // we need to find if its possible to cut target into pieces if not return -1
+public class MaxParts {
+	static int maxParts(int target , int[] a) {
+		
+		int dp[] = new int[target+1];
+		Arrays.fill(dp, -1);
+		for(int i = 1 ; i <= target ;i++) {
+			for(int  j : a) {
+			if(i >= j)dp[i] = Math.max(dp[i], 1+dp[i-j]);
+			}
+		}return dp[target];
+	}
+ 
+	public static void main(String[] args) {
+		FastScanner fs=new FastScanner();
+		int target = fs.nextInt();
+		int n = fs.nextInt();
+		int a[] = new int[n];
+		a = fs.readArray(n);
+		System.out.println(maxParts(target , a));
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
