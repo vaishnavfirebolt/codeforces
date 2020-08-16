@@ -1,0 +1,15 @@
+import java.util.*;
+public class java{
+    public static void main(String[]args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if (n>2 && n<=100){
+            System.out.println((n%2==0)?"YES":"NO");
+        }
+        if (n==1){
+             System.out.println("NO");
+        } if (n==2){
+             System.out.println("NO");
+        }
+    }
+}
