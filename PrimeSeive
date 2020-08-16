@@ -1,0 +1,33 @@
+package numberTheory;
+import java.util.*;
+
+public class PrimeSeive {
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int n  = sc.nextInt();
+		sc.close();
+		boolean primeArray[] = new boolean[n];
+		
+		Arrays.fill(primeArray, false);
+		for(int i = 3 ; i < n ; i += 2) {
+			primeArray[i] = true;
+		}
+		primeArray[2] = true;
+		
+		for(int i = 3 ; i < n ; i += 2) {
+			if(primeArray[i] == true) {
+				for(int j = i * i ; j< n ; j += 2*i) {
+					primeArray[j] = false;
+				}
+			}
+		}
+		for(int i = 2 ; i  < n ; i++) {
+			if(primeArray[i] == true)System.out.println(i);
+		}
+		
+	}
+	
+}
