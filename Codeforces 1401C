@@ -1,0 +1,66 @@
+package day23;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+import java.util.*;
+
+public class Codeforces1401C {
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int  t = sc.nextInt();
+		for(int tt= 0 ; tt < t ;tt++) {
+			int n = sc.nextInt();
+			int a[] = new int[n];
+			int b[] = new int[n];
+			int min  = Integer.MAX_VALUE;
+			for(int i =0 ;i <n ;i++) {
+				int p = sc.nextInt();
+				a[i] = b[i] = p;
+				min = Math.min(min, p);
+			}
+			Arrays.sort(b);
+			boolean valid = true;
+			for(int i = 0; i < n ; i++) {
+				if(a[i]!= b[i]) {
+					if(a[i]%min != 0) {
+						valid = false;
+						break;
+					}
+				}
+			}
+			if(valid)System.out.println("YES");
+			else System.out.println("NO");
+		}
+	
+	}
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
