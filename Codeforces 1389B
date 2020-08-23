@@ -1,0 +1,80 @@
+package day25;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class Codeforces1389B {
+	
+	static int dp[][][];
+	static int[] a; 
+ 
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		int T=sc.nextInt();
+		for (int tt=0; tt<T; tt++) {
+		int n = sc.nextInt();
+		int movesleft  = sc.nextInt();
+		int leftallowed = sc.nextInt();
+		a= sc.readArray(n);
+		dp = new int[leftallowed+1][2][n];
+		for(int i = 0 ; i < dp.length ; i++) {
+			for(int j = 0 ; j  < dp[i].length ; j++) {
+				Arrays.fill(dp[i][j], -1);
+			}
+		}
+		int ans = go(leftallowed , 0 , 0 ,movesleft);
+		System.out.println(ans + a[0]);
+		}
+		
+	}
+	static int go(int leftallowed , int leftlast , int index , int movesleft) {
+		if(dp[leftallowed][leftlast][index] != -1)return dp[leftallowed][leftlast][index];
+		if(movesleft == 0)return 0;
+		
+		int best = 0;
+		
+		if(leftlast == 0 && index>0 && leftallowed >0) {
+			best = Math.max(best, go(leftallowed -1, 1 , index-1 , movesleft -1)+ a[index-1]);
+		}
+		best = Math.max(best,go(leftallowed, 0 , index+1 , movesleft -1)+ a[index+1]);
+		
+		return dp[leftallowed][leftlast][index] = best;
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
