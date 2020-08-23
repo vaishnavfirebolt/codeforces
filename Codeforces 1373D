@@ -1,0 +1,95 @@
+package day25;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class Codeforces1373D {
+ 
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		   StringBuilder sb=new StringBuilder();
+	        int t=sc.nextInt();
+	        while(t-->0){
+	            int n=sc.nextInt();
+	            int[] a=new int[n];
+	            for(int i=0;i<n;i++)a[i]=sc.nextInt();
+	            LinkedList<Integer> ll=new LinkedList<>();
+	            for(int i=0;i<n;i++){
+	                if(i%2==0 && i+1<n){
+	                    ll.add(a[i+1]-a[i]);
+	                }
+	            }
+	            long max=kadane(ll);
+	            ll=new LinkedList<>();
+	            for(int i=0;i<n;i++){
+	                if(i%2==1 && i+1<n){
+	                    ll.add(a[i]-a[i+1]);
+	                }
+	            }
+	            max=Math.max(max,kadane(ll));
+	            if(max<0)max=0;
+	            for(int i=0;i<n;i++){
+	                if(i%2==0)max+=a[i];
+	            }
+	            sb.append(max+"\n");
+	        }
+	        System.out.println(sb);
+	    }
+	    static long kadane(LinkedList<Integer> ll){
+	        long curr_max=Long.MIN_VALUE,global_max=-1;
+	        for(int i:ll){
+	            if(curr_max==Long.MIN_VALUE){
+	                curr_max=i;
+	                global_max=i;
+	            }
+	            else{
+	                curr_max=Math.max(curr_max+i,i);
+	                if(curr_max>global_max)global_max=curr_max;
+	            }
+	        }
+	        return global_max;
+		
+		
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
