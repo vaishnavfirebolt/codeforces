@@ -1,0 +1,68 @@
+package day27;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Codeforces1400B {
+	
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int t = sc.nextInt();
+		for(int tt = 0 ; tt < t ; tt++) {
+			int cap1=sc.nextInt(), cap2=sc.nextInt();
+			int nSs=sc.nextInt(), nAs=sc.nextInt();
+			int sWeight=sc.nextInt(), aWeight=sc.nextInt();
+			if (sWeight>aWeight) {
+				int temp=nSs;
+				nSs=nAs;
+				nAs=temp;
+				
+				temp=sWeight;
+				sWeight=aWeight;
+				aWeight=temp;
+			}
+			long ans=0;
+			for (int toKeep=0; toKeep<=nSs; toKeep++) {
+				if (toKeep*(long)sWeight>cap1) continue;
+				int oKeep=Math.min(nSs-toKeep, cap2/sWeight);
+				int myLeft=cap1-toKeep*sWeight;
+				int hisLeft=cap2-oKeep*sWeight;
+				int myAs=Math.min(myLeft/aWeight, nAs);
+				int hisAs=Math.min(hisLeft/aWeight, nAs-myAs);
+				ans=Math.max(ans, toKeep+oKeep+myAs+hisAs);
+			}
+			System.out.println(ans);	
+		}
+	}
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
+
