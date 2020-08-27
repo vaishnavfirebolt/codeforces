@@ -1,0 +1,71 @@
+package AtCoderDP;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class AtCoderDP_C_Vacation {
+	static int dp[] = { 0 , 0 , 0};
+	
+	
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		int n = sc.nextInt();
+		for(int i = 0; i < n ; ++i) {
+			int happiness[] = sc.readArray(3);
+			int newDp[] = new int[3];
+			Arrays.fill(newDp, 0);
+			
+			for(int prev = 0 ; prev < 3 ; ++prev) {
+				for(int curr  = 0 ; curr < 3 ;++curr) {
+					if(prev != curr) {
+						newDp[curr] = Math.max(newDp[curr], (dp[prev] + happiness[curr]));
+					}
+				}
+			}
+			dp = newDp;
+		}
+		System.out.println(Math.max(Math.max(dp[0], dp[1]), dp[2]));
+		
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
