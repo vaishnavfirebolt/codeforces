@@ -1,0 +1,11 @@
+package day29;
+
+import java.util.*;
+public class Codeforces1A{
+	public static void main(String[]_args){
+		Scanner s=new Scanner(System.in);
+		long n=s.nextInt(),m=s.nextInt(),a=s.nextInt();
+		System.out.print((n+a-1)/a*((m+a-1)/a));
+		s.close();
+		}
+	}
