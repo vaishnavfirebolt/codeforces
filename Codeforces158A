@@ -1,0 +1,21 @@
+package day29;
+
+import java.util.*;
+
+public class Codeforces158A {
+	public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	
+	int n = sc.nextInt() , k = sc.nextInt();
+	int a[] = new int[n]; 
+	for(int i =0 ; i< n ;i++) {
+		a[i] = sc.nextInt();
+	}
+	Arrays.sort(a);
+	int min = a[n -k];
+	int c =0 ;
+	 while(c < n && a[n-1 - c] > 0 && a[n-1 - c] >= min){++c;}
+	 System.out.println(c);
+	 sc.close();
+	}
+}
