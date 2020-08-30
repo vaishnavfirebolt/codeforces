@@ -1,0 +1,59 @@
+import java.util.*;
+class Solution{ 
+	
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		while (sc.hasNext()) {
+			String input=sc.next();
+            boolean balanced = true;
+            
+            Stack<Character> mystack = new Stack<>();
+            int i =0;
+            while( i < input.length() ){
+                char ch = input.charAt(i);
+                if (ch == '[' || ch == '{'|| ch == '(' ){
+                    mystack.push(ch);
+                }else if (ch == ']' || ch == '}' || ch == ')'){
+                    if( mystack.isEmpty()){
+                        balanced = false ;
+                        break;
+                    }else{
+                        if(ch=='}' && mystack.peek()=='{'){
+                            mystack.pop();
+                         }
+                         else if(ch=='}' && mystack.peek() !='{'){
+                            balanced = false;
+                            break; 
+
+                         }
+                         else if(ch==']' && mystack.peek()=='['){
+                            mystack.pop();
+                         }
+                         else if(ch==']' && mystack.peek() !='['){
+                            balanced = false;
+                            break; 
+
+                         }
+                         else if(ch==')' && mystack.peek()=='('){
+                            mystack.pop();
+                         }
+                         else if(ch==')' && mystack.peek() !='('){
+                            balanced = false;
+                            break; 
+                        }
+                    }
+                }
+                i++;
+                
+            }if( mystack.isEmpty()==true && balanced == true ){
+                       System.out.println("true");}
+                       else System.out.println("false");
+		}
+		
+	}
+}
+
+
+
