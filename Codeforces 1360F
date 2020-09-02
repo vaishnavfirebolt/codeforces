@@ -1,0 +1,56 @@
+package day35;
+
+import java.util.*;
+
+public class Codeforces1360F{
+	
+	public static void main (String[] args) throws java.lang.Exception{
+	    Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		for(int tt =0 ; tt < t ;tt++){
+		    int n = sc.nextInt();
+		    int m = sc.nextInt();
+		 
+		    char [][]matrix = new char[n][m];   
+		    for(int i=0;i<n;i++) {
+		        matrix[i] = sc.next().toCharArray();
+		    }
+		    
+		    int count=0;
+		    char []temp = new char[m];   
+		    
+		    for(int i = 0; i < m; i++) {
+    		    for(int j = 0 ; j < m ; j++)
+    		       temp[j] = matrix[0][j];
+    		       
+    		    for(char j='a';j<='z';j++) {
+    		        temp[i] = j;
+    		        count = 0;
+    		        for(int k = 1 ; k < n ; k++){
+    		            count = 0;
+    		            for(int l = 0 ; l < m ; l++){
+    		                if(temp[l]!=matrix[k][l]){
+    		                	count++;
+    		                }
+    		            }
+    		            if(count > 1)
+    		               break;
+    		        }
+    		        if(count <= 1)
+    		           break;
+    		    }
+    		    if(count <= 1)
+    		       break;
+    		}
+    		if(count <= 1){
+    		    for(int i = 0 ; i < m ; i++)
+    		       System.out.print(temp[i]);
+    		    System.out.println();     
+    		}
+    	    else
+    	       System.out.println(-1);
+		}
+		sc.close();
+	}
+}
+ 
