@@ -1,0 +1,39 @@
+package day36;
+
+import java.util.Scanner;
+import java.util.Stack;
+ 
+public class Codeforces1175B
+{
+ 
+	public static void main(String[] args){
+		
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		
+		long ans = 0;
+		long inf = (long) Math.pow(2, 32);
+		Stack<Long> stack = new Stack<>();
+		stack.push((long) 1);
+		
+		for (int i = 0; i < n; i++){
+			String curr = sc.next();
+
+			if(curr.equals("add")){
+				ans+=stack.peek();
+			}
+			else if(curr.equals("end")){
+				stack.pop();
+			}
+			else{
+				String strvalue = sc.next();
+				int value = Integer.valueOf(strvalue);
+				stack.push(Math.min(inf, stack.peek()*value));
+			}
+		}
+		if(ans <= 4294967295L)System.out.println(ans);
+		else System.out.println("OVERFLOW!!!");
+		sc.close();
+	}
+ 
+}
