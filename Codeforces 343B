@@ -1,0 +1,30 @@
+package day36;
+
+import java.util.*;
+public class Codeforces343B {
+	
+    public static void main(String[] args) {
+    	
+        Scanner sc = new Scanner(System.in);
+        char[] a = sc.next().toCharArray();
+        
+        Stack<Character> stack = new Stack<>();
+        for (char c : a) {
+            if(!stack.empty() && stack.peek()==c){
+            	stack.pop();
+            }
+            else{
+            	stack.push(c);
+            }
+        }
+        // stack will be empty means starting state of wires is same as final state
+        if(stack.empty()){
+        	System.out.println("YES");
+        }else{
+        	//implies orientation of final and starting state is different
+        	System.out.println("NO");
+        }
+        sc.close();
+    }
+}
+
