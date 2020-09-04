@@ -1,0 +1,58 @@
+package day37;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Codeforces34A {
+	
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int n = sc.nextInt(); 
+		int a[] = sc.readArray(n);
+		int min = Integer.MAX_VALUE;
+		int first = -1 , second = -1;
+		for(int i = 1; i < n ; i++) {
+			int dif = Math.abs(a[i] - a[i-1]);
+			if(dif < min) {
+				first = i ; second = i-1;
+				min = dif;
+			}
+		}
+		int dif = Math.abs(a[0] - a[n-1]);
+		if(dif < min) {
+			first = 0 ; second = n-1;
+		}
+		System.out.println((first +1) +" "+ (second +1) );
+	}
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
+
