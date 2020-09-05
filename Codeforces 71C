@@ -1,0 +1,40 @@
+package day38;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+ 
+public class Codeforces71C {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        boolean valid = true;
+        ArrayList<Boolean> list = new ArrayList<Boolean>();
+        
+        for (int i = 0 ; i < n ; i++){
+            list.add(sc.nextInt() == 1 ? true:false);
+        }
+        
+        sc.close();
+        
+        for(int i = 3 ; i <=  n; i++){
+            if( n % i == 0){
+                int k = n/i;
+                for(int z = 0; z < k ;z++){
+                    valid = true;
+                    for (int j = 0; j < i; j++){
+                        if(list.get( z + j * k) == false){
+                            valid = false;
+                        }
+                    }
+                    if(valid){
+                        System.out.println("YES");
+                        return;
+                    }
+                }
+            }
+        }
+        System.out.println("NO");
+        return;
+    }
+}
