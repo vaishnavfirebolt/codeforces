@@ -1,0 +1,31 @@
+package day38;
+
+import java.util.*;
+
+public class Codeforces437B{
+	public static void main(String args[]){
+		Scanner sc = new Scanner(System.in);
+		int sum = sc.nextInt();
+		int limit = sc.nextInt();
+		int mask = 0, size = 0 ;
+		StringBuffer sb = new StringBuffer();
+		for(int i = limit ; i > 0 ; i--){
+			int bit = Integer.lowestOneBit(i);
+			if(bit + mask <= sum){
+				size += 1;
+				mask += bit;
+				sb.append(i + " ");
+			}
+		}
+		if(mask != sum)
+			System.out.println(-1);
+		else
+		{
+			System.out.println(size);
+			System.out.println(sb);
+		}
+		sc.close();
+	}
+}
+
+
