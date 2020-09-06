@@ -1,0 +1,28 @@
+package day39;
+
+import java.util.*;
+
+public class Codeforces166C {
+	
+  public static void main(String[] args) {
+	  
+    Scanner sc = new Scanner (System.in);
+    int m = sc.nextInt();
+    int n = sc.nextInt(); 
+    int ctr = 0;
+    ArrayList<Integer> a = new ArrayList <Integer> (); 
+    
+    for (int x = 0; x < m; x++){
+      a.add(sc.nextInt());
+    }
+    sc.close();
+    Collections.sort(a);
+    
+    while (a.get(((a.size()+1)/2)-1) != n ){
+      a.add(n);
+      Collections.sort(a);
+      ctr++;
+    }
+    System.out.print(ctr);
+  }
+}
