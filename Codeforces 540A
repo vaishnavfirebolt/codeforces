@@ -1,0 +1,71 @@
+package day37;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class Codeforces540A {
+ 
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		int n = sc.nextInt();
+		char a[] = sc.next().toCharArray();
+		char d[] = sc.next().toCharArray();
+		int b[] = new int[n];
+		int e[] = new int[n]; 
+		int j = 0;
+		for(char i : a) {
+			b[j] = (int)i;
+			e[j] = (int)d[j] ;
+					j++;
+			
+		}int ans  =0;
+		for(int i = 0 ; i < n ;i++) {
+		int c =	Math.min(Math.abs(b[i] - e[i]), Math.abs(10 + b[i] - e[i]));
+		System.out.println(c);
+		}
+		System.out.println(ans);
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
