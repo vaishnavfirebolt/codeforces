@@ -1,0 +1,98 @@
+package day41;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class Codeforces1407B {
+	
+	private static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+	
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		int T=sc.nextInt();
+		for (int tt=0; tt<T; tt++) {
+			int n = sc.nextInt();
+			Integer a[] = sc.readArray(n);
+			Arrays.sort(a , Comparator.reverseOrder());
+			
+			int b[] = new int[n];
+			b[0] = a[0];
+			int prevGcd = a[0];
+			boolean used[] = new boolean[n];
+			used[0] = true;
+			
+			for(int i = 1 ; i < n ; i++) {
+				int maxGcd = 1;
+				int idx = -1;
+				for(int j = 0; j < n; j++) {
+                    if(used[j]) {
+                        continue;
+                    }
+                    int curr = gcd(prevGcd , a[j]);
+                    if(curr >= maxGcd) {
+                    	maxGcd = curr;
+                    	idx = j;
+                    }
+				}
+				b[i] = a[idx];
+                used[idx] = true;
+                prevGcd = maxGcd;
+			}
+			 for(int i : b) {
+				 System.out.print(i + " ");
+	            }
+	         System.out.println();
+			
+		}
+		
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		Integer[] readArray(int n) {
+			Integer[] a=new Integer[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
+
