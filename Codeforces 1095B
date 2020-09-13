@@ -1,0 +1,67 @@
+package day46;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class Codeforces1095B {
+ 
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		int n = sc.nextInt();
+		List<Integer> l = new ArrayList<>();
+		for(int i = 0 ; i  < n ; i++) {
+			l.add(sc.nextInt());
+		}
+		if(n == 2 ) {
+			System.out.println(0);
+			return;
+		}
+		Collections.sort(l);
+		System.out.println(Math.min(l.get(n-1) - l.get(1), l.get(n-2) - l.get(0)));
+		
+	}
+	
+//	public void sort(Integer[] a) {
+//		ArrayList<Integer> l=new ArrayList<>();
+//		for (int i:a) l.add(i);
+//		Collections.sort(l);
+//		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+//	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		Integer[] readArray(int n) {
+			Integer[] a=new Integer[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
+
