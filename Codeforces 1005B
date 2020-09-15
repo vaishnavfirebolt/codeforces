@@ -1,0 +1,70 @@
+package day48;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class Codeforces1005B {
+ 
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		String one = sc.next();
+		String two = sc.next();
+		StringBuilder sb = new StringBuilder(one);
+		StringBuilder s = new StringBuilder(two);
+		sb = sb.reverse();
+		s = s.reverse();
+		int ans = 0;
+		for(int i = 0 ; i < Math.min(one.length(), two.length()) ; i++) {
+			if(sb.charAt(i) == s.charAt(i)) {
+				ans++;
+			}else break;
+		}
+		if(ans == 0) {
+			System.out.println(one.length() + two.length());
+		}else System.out.println(one.length() + two.length() - (2 * ans));
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
+
