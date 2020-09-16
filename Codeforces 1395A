@@ -1,39 +1,46 @@
-package day18;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-//import java.util.*;
+import java.util.*;
 
 public class Codeforces1395A {
-	@SuppressWarnings("unused")
+	
 	public static void main(String[] args) {
 		FastScanner sc = new FastScanner();
-		int  t = sc.nextInt();
-   for(int tt= 0 ; tt < t ;tt++) {
-			long a[] = new long[4];
-			for(int i =0 ; i < 4 ; i++) {
-				a[i] = sc.nextLong();
-			}
-			int odd = 0;
-			for(long i : a) {
-				if(i % 2 != 0)odd++;
-			}
-			if( odd == 0 || odd == 1)System.out.println("Yes");
-			else if(odd == 3) {
-				int i;
-				for(i  =0 ; i < 4 ;i++) {
-					break;
+		int t = sc.nextInt();
+		for(int tt =0 ; tt < t; tt++) {
+			int a[] = sc.readArray(4);
+			int even = 0;
+			for(int  i = 0; i < 4 ;i++) {
+				if(a[i] % 2 == 0) {
+					even++;
 				}
-				if(a[i]!= 0)System.out.println("Yes");
-				else if(i == 3)System.out.println("Yes");
-				else System.out.println("No");
 			}
-			else System.out.println("No");
+			if(even >= 3) {
+				System.out.println("Yes");
+			}
+			else {
+				if(a[0] > 0 && a[1] > 0 && a[2] >0) {
+					a[0]--;
+					a[1]--;
+					a[2]--;
+					a[3] += 3;
+				}
+				int newEven = 0;
+				for(int  i = 0; i < 4 ;i++) {
+					if(a[i] % 2 == 0) {
+						newEven++;
+					}
+				}
+				if(newEven >= 3) {
+					System.out.println("Yes");
+				}else {
+					System.out.println("No");
+				}
+			}
 		}
-	
-	}
+}
+
 	static class FastScanner {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st=new StringTokenizer("");
@@ -63,4 +70,3 @@ public class Codeforces1395A {
 		}
 	}
 }
-
