@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class Codeforces31B{
+	
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		String s = sc.next();
+		sc.close();
+		
+		int flag=0;
+		StringBuffer sb=new StringBuffer(s);
+		if(s.charAt(0)=='@' || s.indexOf('@')==-1 || s.charAt(s.length()-1)=='@'){
+			System.out.println("No solution");
+		}
+		
+		else{
+			int k=0;
+			for(int i=0;i<s.length();i++){
+				
+				int temp=s.indexOf('@',k);
+				if(temp==-1 || s.indexOf('@',temp+1)==-1){
+					break;
+				}
+				sb.insert(temp+2, ',');
+				s = sb.toString();
+				k = temp+1;
+				i = k;
+			}
+			
+			for(int i=0;i<s.length();i++) {
+				if((s.charAt(i)=='@' && s.charAt(i-1)==',') ||( s.charAt(i)=='@' && s.charAt(i+1)=='@' )) {
+					System.out.println("No solution");
+					flag=1;
+					break;
+				}
+			}
+			if(flag==0){
+				if(s.charAt(s.length()-1)==','){
+					System.out.println(s.substring(0,s.length()-1));
+				}
+				
+				else{
+					System.out.println(s);
+				}
+			}
+		}
+	}
+}
