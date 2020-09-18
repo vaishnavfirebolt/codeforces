@@ -1,0 +1,26 @@
+package day50;
+
+import java.util.Scanner;
+
+public class Codeforces703A {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int chris = 0 ; int Mishka =0 ;
+		for(int i = 0 ; i < n ; i++) {
+			int a = sc.nextInt() ; int b = sc.nextInt();
+			if(a > b)Mishka++;
+			if(b  > a)chris++;
+		}
+		if(Mishka > chris) {
+			System.out.println("Mishka");
+		}else if(chris > Mishka) {
+			System.out.println("Chris");
+		}else System.out.println("Friendship is magic!^^");
+		
+		sc.close();
+	}
+
+}
