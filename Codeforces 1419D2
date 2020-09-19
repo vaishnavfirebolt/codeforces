@@ -8,7 +8,7 @@ public class C {
 	public static void main(String[] args) {
 		FastScanner sc = new FastScanner();
 		int n = sc.nextInt();
-		int a[] = new int[n];
+		int a[] = sc.readArray(n);
 	
 		int b[] = new int[n];
 		int k = 0;
