@@ -1,0 +1,79 @@
+package day51;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class Codeforces987C {
+ 
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		int n = sc.nextInt();
+		int a[] = sc.readArray(n);
+		int b[] = sc.readArray(n);
+		long best = Long.MAX_VALUE;
+		for(int i = 0 ; i < n ;i++) {
+			int minbefore = Integer.MAX_VALUE;
+			for(int j = 0 ;j < i ; j++) {
+				if(a[j] < a[i] && b[j] < minbefore) {
+					minbefore = b[j];
+				}
+			}
+			if(minbefore == Integer.MAX_VALUE)continue;
+			int minafter = Integer.MAX_VALUE;
+			for(int j = i+1 ;j < n ; j++) {
+				if(a[j] > a[i] && b[j] < minafter) {
+					minafter = b[j];
+				}
+			}
+			if(minafter == Integer.MAX_VALUE)continue;
+//			System.out.println(minbefore + " " + minafter);
+			best = Math.min(best, b[i] + (long)minbefore + minafter);
+		}
+		if(best == Long.MAX_VALUE) {
+			System.out.println(-1);
+		}else System.out.println(best);
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
