@@ -1,0 +1,22 @@
+
+import java.util.*;
+
+public class Codeforces893B {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		ArrayList<Long> list = new ArrayList<>();
+		for(int i = 1 ; i <= 15 ;i++) {
+			long p = 1 << i;
+			list.add((p -1) *  p / 2);
+		}
+		long ans = 1;
+		int n = sc.nextInt();
+		for(int i = 0 ; i < 15 ; i++) {
+			if(n % list.get(i) == 0) {
+				ans = list.get(i);
+			}
+		}
+		System.out.println(ans);
+		sc.close();
+	}
+}
