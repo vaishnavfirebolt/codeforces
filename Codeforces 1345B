@@ -1,0 +1,61 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class B {
+	
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int t = sc.nextInt();
+		for(int tt =0 ; tt < t; tt++) {
+			int n = sc.nextInt();
+			System.out.println(go(n));
+		}
+	}
+
+	static int go(int n) {
+		if(n < 2)return 0;
+		n = n -2;
+		for(int i = 2 ; i < n ;i++) {
+			int a= (i)*2 + i -1;
+//			System.out.println(a +" a");
+			if(n - a < 0) {
+				break;
+			}else {
+//				System.out.println(n + " n");
+				n = n -a;
+			}
+		}
+//		System.out.println(n + " n");
+		return 1 + go(n);
+	}
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
