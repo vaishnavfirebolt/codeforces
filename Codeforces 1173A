@@ -1,29 +1,29 @@
-package day6;
-import java.util.*;
+package day55;
 
-public class CD1173A {
+import java.util.Scanner;
 
+public class Codeforces1173A {
 	public static void main(String[] args) {
-   
 		Scanner sc = new Scanner(System.in);
-		int x = sc.nextInt() , y = sc.nextInt(), z = sc.nextInt();
-		if(z ==0 && x== y) System.out.println("0");
-		else if(z ==0 && x > y)System.out.println("+");
-		else if(z ==0 && x<y)System.out.println("-");
-		else if(z != 0 && x== 0 && y == 0)System.out.println("?");
-		else if(x==0 && y==0 && z==0)System.out.println("0");
-		else {
-			if(x > y && x-y > z )System.out.println("+");
-			else if(x > y && x-y >= z)System.out.println("?");
-			else if(x<y && y-x > z)System.out.println("-");
-			else if(x<y && y - x <= z)System.out.println("?");
-			
-		}
 		
+		int x = sc.nextInt() , y =  sc.nextInt() , z = sc.nextInt();
+		if(x == y) {
+			if(z == 0) {
+				System.out.println("0");
+			}else System.out.println("?");
+		}
+		else if(x > y) {
+			if(y + z < x) {
+				System.out.println("+");
+			}else System.out.println("?");
+		}else if(y > x) {
+			if(x + z < y) {
+				System.out.println("-");
+			}else System.out.println("?");
+		}
 		
 		
 		sc.close();
 		
 	}
-
 }
