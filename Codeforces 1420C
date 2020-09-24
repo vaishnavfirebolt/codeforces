@@ -11,7 +11,7 @@ public class C {
 		for(int tt = 0; tt < t ;tt++) {
 			int n = sc.nextInt(),q = sc.nextInt();
 			int a[] = sc.readArray(n);
-			long ans = 0;
+			long ans = a[0];
 			for(int i = 1 ; i < n ; i++) {
 				ans += Math.max(0, a[i] - a[i-1]);
 			}
