@@ -1,0 +1,12 @@
+import java.util.*;
+public class Codeforces92A {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt(), K = s.nextInt();
+		int I = 0;
+		while (I + 1 <= K) {
+			K -= (I+1);
+			I = (I+1)%N;
+		}System.out.println(K);
+	}
+}
