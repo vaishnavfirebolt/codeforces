@@ -1,0 +1,63 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class D {
+	
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		String s = sc.next();
+		char a[] = s.toCharArray();
+		
+		long table[][] = new long[26][26];
+		long count[] = new long[26];
+		
+		for(int i = 0 ; i < a.length ; i++) {
+			int num = a[i] - 'a';
+			for(int j = 0 ; j < 26 ; j++) {
+				
+				table[j][num] += count[j];
+			}
+			count[num]++;
+		}
+		long ans = 0 ;
+		for(long p : count) ans = Math.max(ans , p);
+		for(int i = 0 ; i < table.length ; i++) {
+			for(int j = 0 ; j < table[0].length ; j++) {
+				ans = Math.max(ans, table[i][j]);
+			}
+		}
+		System.out.println(ans);
+	}
+	
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
