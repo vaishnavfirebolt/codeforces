@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class A{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a[] = new int[6];
+        for(int i = 0 ; i < 6 ; i++){
+            a[i] = sc.nextInt();
+        }
+        long ans = 0;
+        if(a[4] >= a[5]){
+            ans += Math.min(a[0], a[3]) * a[4];
+            a[3] -= Math.min(a[0], a[3]);
+            
+            ans += Math.min(Math.min(a[2], a[1]), a[3]) * a[5];
+            
+        }else {
+            ans +=  Math.min(Math.min(a[2], a[1]), a[3]) * a[5];
+            a[3] -= Math.min(Math.min(a[2], a[1]), a[3]);
+            ans += Math.min(a[0], a[3])  * a[4];
+        }
+        System.out.print(ans);
+        
+        sc.close();
+    } 
+}
