@@ -1,0 +1,32 @@
+
+import java.util.Scanner;
+
+public class Codeforces520A {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		String s = sc.next();
+		if(n < 26) {
+			System.out.println("NO");
+			return;
+		}
+		String p = s.toLowerCase();
+		int a[] = new int[26];
+		for(int i = 0 ; i < n ;i++) {
+			char ch = p.charAt(i);
+			a[ch - 'a']++;
+		}
+		for(int i : a) {
+			if( i == 0) {
+				System.out.println("NO");
+				return;
+			}
+		}
+		System.out.println("YES");
+		
+		
+		
+		
+		sc.close();
+	}
+}
