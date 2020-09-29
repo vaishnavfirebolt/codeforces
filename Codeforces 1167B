@@ -1,0 +1,50 @@
+package day58;
+
+import java.util.*;
+
+public class Codeforces1167B {
+	
+	
+	static int a[] = {4, 8, 15, 16, 23,  42};
+//	static int p[] = {
+//			-1 ,4 ,16, 8, 23, 42, 15 };
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int ans[] = new int[7];
+		Arrays.fill(ans, -1);
+		for(int i = 2 ; i <= 5 ;i++) {
+			System.out.println("? " + 1 + " " + i);
+			System.out.flush();
+//			ans[i] = p[1] * p[i];
+//			System.out.println(ans[i]);
+			ans[i] = sc.nextInt();
+		}
+		for(int item : a) {
+			boolean valid = true;
+			for(int i = 2 ; i< 6 ;i++) {
+				if( ans[i]  % item != 0) {
+					valid = false;
+				}
+			}
+			if(valid) {
+				ans[1] = item;
+				
+			}
+		}
+		int cSum = ans[1];
+		for(int i = 2 ; i <= 5 ;i++) {
+			ans[i] = ans[i]/ans[1];
+			cSum += ans[i];
+		}
+		int sum = 4 + 8 + 16 + 15 + 23 + 42;
+		ans[6] = sum - cSum;
+		
+		System.out.print("! ");
+		for(int i = 1 ; i < 7 ; i++) {
+			System.out.print(ans[i] + " ");
+		}
+		
+		sc.close();
+	}
+}
