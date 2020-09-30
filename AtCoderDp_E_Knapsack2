@@ -1,0 +1,50 @@
+package AtCoderDP;
+
+import java.util.*;
+
+public class AtCoderDp_E_Knapsack2 {
+	
+	static final long INF =(long) 1e18 + 5;
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt() , w = sc.nextInt();
+		int weights[] = new int[n];
+		int values[] = new int[n];
+		for(int i = 0 ; i < n  ;i++) {
+			weights[i] = sc.nextInt(); 
+			values[i] = sc.nextInt();
+		}
+		int maxSum = 0;     
+		for(int item : values) {
+			maxSum += item;
+		}
+		
+		long dp[] = new long[maxSum + 2];
+		Arrays.fill(dp, INF);
+		dp[0] = 0;
+		
+		for(int item = 0 ; item < n ; item++) {
+			for(int valueTillNow = maxSum - values[item] ; valueTillNow >= 0 ; valueTillNow--) {
+				long valueOfItem = (long)values[item];
+				dp[ (valueTillNow +(int) valueOfItem)] = Math.min(dp[ (valueTillNow + (int)valueOfItem)], dp[valueTillNow] + weights[item]);
+			}
+		}
+		long ans = 0 ;
+		for(int i = 0; i <= maxSum ; i++ ) {
+//			System.out.println(dp[i]);
+			if(dp[i] <= w) {
+				
+				ans = Math.max(ans,(long) i);
+			}
+		}
+		
+		System.out.println(ans);
+		
+		
+		sc.close();
+		
+	}
+
+}
