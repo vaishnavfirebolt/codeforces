@@ -1,0 +1,59 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class B {
+	
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int n = sc.nextInt();
+		String s = "aeiou";
+		for(int i = 5 ; i < n ; i++) {
+			if(i >5) {
+				s += s.charAt(s.length() - 5);
+			}
+			int j = n / i;
+			if(i * j == n && j >= 5) {
+//				System.out.println(i + " i " + j + " j");
+				for(int k = 0 ; k < j ;k++) {
+					System.out.print(s);
+					s = s.substring(1) + s.charAt(0);
+//					System.out.println();
+				}
+				return;
+			}
+		}
+		System.out.println(-1);
+		
+	}
+
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		public long nextLong() {return Long.parseLong(next());}
+ 
+		public double nextDouble() {return Double.parseDouble(next());}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+}
