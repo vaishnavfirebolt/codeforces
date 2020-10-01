@@ -1,0 +1,52 @@
+
+import java.util.Scanner;
+
+public class Codeforces1417D {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		
+		for(int tt =0 ; tt < t ;tt++) {
+			StringBuilder sb = new StringBuilder();
+			int n = sc.nextInt() ;
+			long a[] = new long[n+ 1];
+			long sum = 0;
+			for(int i = 1 ; i <= n ; i++) {
+				a[i] = sc.nextLong();
+				sum += a[i];
+			}
+			
+			if(sum % n != 0) {
+				System.out.println(-1);
+				continue;
+			}
+			long count = 0;
+			for(int i =2 ; i <= n ; i++) {
+				 long remainder = a[i] % i;
+				 long toAdd = i - remainder == i?0:i- remainder;
+				 if(toAdd != 0) {
+					 String s = "1 "+ i + " " + toAdd;
+				 sb.append(s+ "\n");
+				 count++;
+				 }
+				 String y = i+ " 1 " + ((a[i] + toAdd )/ i);
+				 sb.append(y+"\n");
+				 count++;
+			}
+			
+			long ans = sum/n;
+			for(int i = 2 ; i <= n ; i++) {
+				String s = "1 " + (i ) + " "+ans;
+				count++;
+				sb.append(s+"\n");
+			}
+			System.out.println(count);
+			System.out.println(sb);
+		
+		}
+		
+		sc.close();
+	}
+	
+}
