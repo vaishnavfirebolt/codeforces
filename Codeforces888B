@@ -1,0 +1,24 @@
+package day62;
+
+import java.util.Scanner;
+
+public class Codeforces888B {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		 
+		int n = sc.nextInt();
+		char[] a = sc.next().toCharArray();
+		int l = 0, u = 0, d = 0, r = 0;
+		for (char ch : a) {
+			if (ch == 'L') l++;
+			else if (ch == 'R') r++;
+			else if (ch == 'U') u++;
+			else d++;
+		}            
+		System.out.println(2 * Math.min(l, r) + 2 * Math.min(u, d));
+	
+		sc.close();
+	}
+
+}
