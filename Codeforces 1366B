@@ -1,0 +1,34 @@
+package day62;
+
+import java.util.Scanner;
+
+public class Codeforces1366B {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt = 0 ; tt < t ; tt++) {
+			int n = sc.nextInt() , x = sc.nextInt() , m = sc.nextInt();
+			
+			int l = n + 1 , r = 0;
+			for(int i = 0 ; i < m ; i++) {
+				int p = sc.nextInt() , q = sc.nextInt();
+				if(r == 0) {
+					if(p <= x && q >= x) {
+						l = p ; r = q;
+					}
+				}else {
+					if((p <= l && q >= l)|| (p >= l && p <= r) ) {
+						l = Math.min(l, p);
+						r = Math.max(r, q);
+					}
+				}
+			}
+			if(r== 0) {
+				System.out.println(1);
+			}else System.out.println(r -l + 1);
+		}
+		
+		sc.close();
+	}
+}
