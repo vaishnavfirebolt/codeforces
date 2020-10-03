@@ -1,0 +1,37 @@
+package day62;
+
+import java.util.Scanner;
+
+public class Codeforces1366C {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt() ; 
+		for(int tt =0 ; tt <t ;tt++) {
+			int n = sc.nextInt() , m = sc.nextInt();
+			int a[][] = new int[n][m];
+			
+			for(int i = 0 ; i < n ; i++) {
+				for(int j = 0 ; j < m ; j++) {
+					a[i][j] = sc.nextInt();
+				}
+			}
+			  int[] count0 = new int[n + m], count1 = new int[n + m];
+	            for(int i = 0; i < n; i ++) {
+	                for(int j = 0; j < m; j++) {
+	                    int curr = i + j;
+	                    if(a[i][j] == 0) count0[curr]++;
+	                    else count1[curr]++;
+	                }
+	            }
+	            int ans = 0;
+	            for(int i = 0; i <= n + m - 2; i++) {
+	                if((n + m - 2) % 2 == 0 && i == (n + m - 2) / 2) continue;
+	                else ans += Math.min(count0[i] + count0[n + m - 2 - i], count1[i] + count1[n + m - 2 - i]);
+	            }
+	            System.out.println(ans / 2);
+		}
+		
+		sc.close();
+	}
+}
