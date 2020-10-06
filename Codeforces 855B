@@ -1,0 +1,80 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+ 
+public class Codeforces855B {
+	
+	static long dp[][];
+	static long a[];
+ 
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		
+		int n = sc.nextInt() ;
+		long b[] = {sc.nextLong() , sc.nextLong() , sc.nextLong()};
+		a = sc.readArray(n);
+		
+		dp = new long[n][3];
+		for(int i = 0 ;i  < n ; i++) {
+			Arrays.fill(dp[i], Long.MAX_VALUE);
+		}
+		
+		System.out.println(go(0,0,b));
+	}
+	
+	static long go(int index , int c , long[] values) {
+		if(index == a.length) {
+			if(c == 3)return 0l;
+			else return Long.MIN_VALUE;
+		}
+		
+		if(c == 3) return 0L;
+		
+		if(dp[index][c]!=Long.MAX_VALUE) return dp[index][c];
+		
+		long ans = Long.MIN_VALUE;
+		ans = Math.max(ans , values[c]*a[index] + go(index,c+1,values));
+		ans = Math.max(ans , go(index+1,c,values));
+		return dp[index][c] = ans;
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		long[] readArray(int n) {
+			long[] a=new long[n];
+			for (int i=0; i<n; i++) a[i]=nextLong();
+			return a;
+		}
+	}
+ 
+}
+
+
