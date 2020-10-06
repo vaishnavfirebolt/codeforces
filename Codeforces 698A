@@ -1,0 +1,92 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+ 
+public class Codeforces698A {
+	
+	static int dp[][];
+	static int a[];
+ 
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int n = sc.nextInt();
+		a = sc.readArray(n);
+		
+		dp = new int[n][3];
+		for(int i = 0 ; i < n ; i++) {
+			Arrays.fill(dp[i], -1);
+		}
+		System.out.println(go(0,0));
+		
+	}
+	
+	static int go(int index , int prev) {
+		if(index == a.length)return 0;
+		
+		if(dp[index][prev] != -1) {
+			return dp[index][prev];
+		}
+		
+		int ans = Integer.MAX_VALUE;
+		// case when a[i] == 0 means rest 
+		if(a[index] == 0) return 1+ go(index +1 , 0);
+		//case when a[i] == 1 means contest
+		else if(a[index] == 1) {
+			if(prev != 1) ans = Math.min(ans, go(index +1, 1));
+			ans = Math.min(ans, 1 + go(index +1 , 0));
+		}// case when a[i] == 2 means gym
+		else if (a[index] == 2) {
+			if(prev != 2) ans = Math.min(ans, go(index +1 , 2));
+			ans = Math.min(ans, 1 + go(index +1 , 0));
+		}//when a[i] == 3
+		else {
+			if(prev != 1) {
+				ans = Math.min(ans,go(index +1 , 1));
+			}if(prev != 2) {
+				ans = Math.min(ans,  go(index +1 , 2));
+			}
+			ans = Math.min(ans, 1 + go(index +1 , 0));
+		}
+		return dp[index][prev] = ans;
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
