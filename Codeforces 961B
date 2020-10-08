@@ -1,0 +1,44 @@
+
+import java.util.Scanner;
+
+public class Codeforces961B {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt() , k = sc.nextInt();
+		int a[] = new int[n];
+		int b[] = new int[n];
+		long ans = 0 ;
+		
+		for(int i = 0 ; i < n ;i++) {
+			a[i] = sc.nextInt();
+		}
+		for(int i = 0 ;i < n ; i++) {
+			b[i] = sc.nextInt();
+		}
+		
+		for(int i = 0 ; i < n ;i++) {
+			if(b[i] == 1) {
+				ans += a[i];
+				a[i] = 0;
+			}
+		}
+		
+		long prefix[] = new long[n];
+		prefix[0] = a[0];
+		long max = a[0];
+		for(int i = 1; i< n ; i++) {
+			prefix[i] = prefix[i-1] + a[i];
+			if(i < k) {
+				max = Math.max(max, prefix[i]);
+			}else {
+				max = Math.max(max, prefix[i] - prefix[i - k]);
+			}
+//			System.out.println(prefix[i]);
+		}
+		System.out.println(ans + max);
+		sc.close();
+	}
+
+}
