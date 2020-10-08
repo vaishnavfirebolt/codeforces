@@ -1,0 +1,43 @@
+import java.util.*;
+public class Codeforces920C {
+	
+	static class Node implements Comparable<Node>{
+	    int value,index;
+	    public Node(int value,int index){
+	        this.value=value;
+	        this.index=index;
+	    }
+	    public int compareTo(Node o){
+	        return this.value-o.value;
+	    }
+	}
+
+	public static void main(String[] args) {
+		Scanner sc =  new Scanner(System.in);
+		int n=sc.nextInt();
+        Node[] node=new Node[n+1];
+ 
+        node[0]=new Node(0,0);
+        for(int i=1;i<=n;i++)node[i]=new Node(sc.nextInt(),i);
+ 
+        int[] b=new int[n];
+        String s= " ";
+        s += sc.next();
+        for(int i = 1 ; i <= n - 1;i++){
+            b[i] = s.charAt(i) - 48;
+        }
+        
+        for(int i = 2;i <= n - 1 ; i++)b[i] += b[i-1];
+        Arrays.sort(node);
+        
+        for(int i = 1; i <= n; i++){
+            int j = node[i].index;
+            if(j - i > b[j-1] - b[i-1]){
+                System.out.println("NO");
+                return;
+            }
+        }
+        System.out.println("YES");
+	}
+	
+}
