@@ -1,0 +1,44 @@
+package day65;
+
+import java.util.Scanner;
+
+public class Codeforces768C {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt() , k = sc.nextInt() , x = sc.nextInt();
+		int dp[] = new int[1200];
+		
+		int temp[] = new int[1200];
+		for(int i = 0 ; i < n ; i++) {
+			dp[sc.nextInt()]++;
+		}
+		for(int t= 0 ; t < k  ; t++) {
+			temp = dp.clone();
+			int parity = 0;
+			for(int i = 0 ; i < 1200 ; i++) {
+				if(dp[i] > 0) {
+					int curr = i^x;
+					int change = dp[i]/2;
+					if(parity == 0) {
+						change += dp[i]&1;
+					}
+					temp[i] -= change;
+					temp[curr] += change;
+					parity ^= dp[i]&1;
+				}
+			}
+			dp = temp.clone();
+		}
+		int max = Integer.MIN_VALUE;
+		int min = Integer.MAX_VALUE;
+		for(int i = 0 ; i< 1200 ; i++) {
+			if(dp[i] > 0) {
+				min = Math.min(min, i);
+				max = Math.max(max, i);
+			}
+		}
+		System.out.println(max + " " + min);
+		sc.close();
+	}
+}
