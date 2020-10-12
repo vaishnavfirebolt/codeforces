@@ -1,0 +1,25 @@
+package day66;
+
+import java.util.Scanner;
+
+public class Codeforces859B {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		sc.close();
+		
+		for(long len = 4;;len+=2){
+			long a = len/4;
+			long b = len/2-a;
+			if(a*b >= n){
+				System.out.println(len);
+				return;
+			}
+		}
+		
+		
+	}
+
+}
