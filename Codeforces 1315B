@@ -1,0 +1,38 @@
+package day67;
+
+import java.util.Scanner;
+
+public class Codeforces1315B {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		 int t = sc.nextInt(); 
+		    for(int tt=0; tt<t; tt++) {
+		      int a = sc.nextInt(); 
+		      int b = sc.nextInt();
+		      int price = sc.nextInt(); 
+		      char[] s = sc.next().toCharArray(); 
+		 
+		      int n = s.length;
+		      long cost = 0;
+		      if(s[s.length-1] == s[s.length-2]) {
+		        if(s[s.length-1] == 'A') cost += a; 
+		        else cost += b;
+		      }
+		      for(int ind=s.length-1 -1; ind>=0; ind--) {
+		        if(cost > price) break;
+		        if(s[ind] != s[ind+1]) {
+		          if(s[ind] == 'A') {
+		            cost += a;
+		          } else {
+		            cost += b;
+		          }
+		        }
+		        if(cost > price) break;
+		        n = ind+1;
+		      }
+		      System.out.println(n);
+		
+		    }
+		    sc.close();
+	}
+}
