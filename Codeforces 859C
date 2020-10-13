@@ -1,0 +1,28 @@
+package day67;
+
+import java.util.Scanner;
+
+public class Codeforces859C {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int[] a = new int[n];
+		for(int i = 0; i < n ; i++) a[i] = sc.nextInt();
+		sc.close();
+		
+		int[] dp = new int[n];
+		dp[n-1] = a[n-1];
+		
+		for(int i = n - 2 ;  i >= 0; i--) {
+			dp[i] = Math.max(dp[i+1],a[i] + sum(i+1,n-1,a) - dp[i+1]);
+		}
+		
+		System.out.println((sum(0, n - 1 ,a) - dp[0]) +" "+ dp[0]);
+	}
+	public static int sum(int i, int j, int[] a) {
+		int res = 0;
+		for(int k = i; k <= j; k++) res += a[k];
+		return res;
+	}
+}
