@@ -1,0 +1,85 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
+ 
+public class E {
+	static long a[];
+	static long b[];
+	static Long dp[][];
+ 
+	public static void main(String[] args) {
+		FastScanner sc=new FastScanner();
+		
+		int n = sc.nextInt();
+		a = sc.readArray(n);
+		b = sc.readArray(n);
+		dp = new Long[n+ 3][2];
+		System.out.println(Math.max(go(0,true), go(0,false)));
+		
+	}
+	static long go(int index , boolean first) {
+		//base cases
+		if(index == a.length-1) {
+			if(first)return dp[index][1] = a[index];
+			else return dp[index][0] = b[index];
+		}
+		
+		if(first) {
+			if(dp[index][1] != null)return dp[index][1];
+		}else {
+			if(dp[index][0] != null)return dp[index][0];
+		}
+		
+		// recursive cases
+		long ans = 0;
+		if(first) {
+			//choose the current 
+			ans += a[index] + go(index +1 , false);
+			// leave the current
+			ans = Math.max(ans , go(index +1 , true));
+			return dp[index][1] = ans;
+		}
+		else {
+			ans += b[index] + go(index +1 , true);
+			ans = Math.max(ans, go(index +1 , false));
+			return dp[index][0] = ans;
+		}
+		
+	}
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		public long nextLong() {return Long.parseLong(next());}
+		long[] readArray(int n) {
+			long[] a=new long[n];
+			for (int i=0; i<n; i++) a[i]=nextLong();
+			return a;
+		}
+	}
+ 
+}
