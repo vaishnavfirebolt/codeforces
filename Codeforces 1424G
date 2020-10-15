@@ -1,0 +1,25 @@
+import java.util.*;
+ 
+public class D {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt(), i = 0, c = 0, k =0, y=0, a[] = new int[200005];
+		for(int t = 0 ; t  < n ; t++) {
+			a[i++] = sc.nextInt() * 2 + 1;
+			a[i++] = sc.nextInt() * 2;
+		}
+		int b[] = new int[i];
+		for (int j = 0; j < i; j++) b[j] = a[j];
+		Arrays.sort(b);
+		for (int j = 0; j < i; j++) {
+			if (b[j] % 2 == 1) c++;
+			else c--;
+			if (c > k) {
+				k = c;
+				y = b[j] / 2;
+			}
+		}
+		System.out.println(y + " " + k);
+		sc.close();
+	}
+}
