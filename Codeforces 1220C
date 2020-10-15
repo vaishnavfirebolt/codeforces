@@ -1,0 +1,25 @@
+
+import java.util.*;
+
+public class B {
+    
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
+        char a[] = sc.next().toCharArray();
+        System.out.println("Mike");
+        char min = a[0];
+        for(int i = 1 ;i <  a.length ;i++) {
+        	if(a[i] > min) {
+        		sb.append("Ann"+"\n");
+        	}else {
+        		sb.append("Mike"+"\n");
+        		if(a[i] < min) {
+        			min = a[i];
+        		}
+        	}
+        }
+        System.out.println(sb);
+       
+    }
+}
