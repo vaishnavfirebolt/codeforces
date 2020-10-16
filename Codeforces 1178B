@@ -1,0 +1,29 @@
+
+import java.util.Scanner;
+ 
+public class Codeforces1178B {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		char[] a = sc.next().toCharArray();
+		sc.close();
+		
+		int n = a.length;
+		long pre[] = new long[n];
+		long suf[] = new long[n];
+		
+		for(int i = 1;i < n;i++) {
+			pre[i] = pre[i-1];
+			if(a[i] == 'v' && a[i-1] =='v') pre[i]++;
+		}
+		for(int i = n-2 ;i >= 0; i--) {
+			suf[i] = suf[i+1];
+			if(a[i] == 'v' && a[i+1] =='v') suf[i]++;
+		}
+		long ans = 0L;
+		for(int i = 0; i < n ; i++) {
+			if(a[i]=='o') ans += pre[i] * suf[i];
+		}
+		System.out.println(ans);
+	}
+}
