@@ -1,0 +1,35 @@
+
+import java.util.Scanner;
+
+public class Codeforces1037C {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		char a[] = sc.next().toCharArray();
+		char b[] = sc.next().toCharArray();
+		
+		int i = 0;
+		long ans = 0;
+		while(i < n -1) {
+			if(a[i] != b[i] && a[i+1] != b[i+1] && a[i] != a[i+1]) {
+				a[i] = b[i] ;
+				a[i+1] = b[i+1];
+				ans++; 
+				i++;
+				i++;
+			}else if(a[i] != b[i]) {
+				ans++;
+				i++;
+			}else {
+				i++;
+			}
+			
+		}
+		if(a[n-1] != b[n-1])ans++;
+//		for(char ch : a)System.out.print(ch);
+		System.out.println(ans);
+		
+		sc.close();;
+	}
+}
