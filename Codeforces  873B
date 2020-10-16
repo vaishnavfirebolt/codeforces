@@ -1,0 +1,34 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Codeforces873B {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		String s = sc.next();
+		HashMap<Integer, Integer> map = new HashMap<>();
+		map.put(0, -1);
+        int ones = 0;
+        int zeros = 0;
+        int max = 0;
+        for (int i=0;i<n;i++)
+        {
+            int x = s.charAt(i) - '0';
+            if (x == 1)
+                ones++;
+            else
+                zeros++;
+            int diff = ones - zeros;
+            if (map.containsKey(diff))
+            {
+                max = Math.max(max, i - map.get(diff));
+            }
+            else
+            	map.put(diff, i);
+        }
+        System.out.println(max);
+		
+		sc.close();
+	}
+}
