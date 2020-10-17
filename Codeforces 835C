@@ -1,0 +1,55 @@
+package prefixSum;
+
+import java.util.Scanner;
+
+public class Codeforces835C {
+	
+	static int n ,c , q;
+	static int precomp[][][];
+	
+	public static void main(String[] args) {
+		solve();
+	}
+	static void solve() {
+		Scanner sc = new Scanner(System.in);
+		
+		n = sc.nextInt();
+		q = sc.nextInt();
+		c = sc.nextInt();
+		
+		precomp = new int[c + 1][101][101];
+		for(int i = 0 ; i < n ;i++) {
+			int x = sc.nextInt(), y= sc.nextInt(),s = sc.nextInt();
+			precomp[s][x][y]++;
+		}
+		// computing 3d prefix sum for easy calculation
+		for(int i = 0 ; i <= c  ; i++) {
+			for(int x = 1 ; x <= 100 ; x++) {
+				for(int y = 1 ; y <= 100 ; y++ ) {
+					precomp[i][x][y] += precomp[i][x-1][y] + precomp[i][x][y-1] - precomp[i][x-1][y-1];
+				}
+			}
+		}
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < q ; i++) {
+			int t = sc.nextInt();
+			int x1 = sc.nextInt();
+            int y1 = sc.nextInt();
+            int x2 = sc.nextInt();
+            int y2 = sc.nextInt();
+            sb.append(get(t,x1,y1,x2,y2) + "\n");
+		}
+		System.out.println(sb);
+		sc.close();
+	}
+	static int get(int t, int x1, int y1, int x2, int y2) {
+		int ans = 0;
+        for (int i = 0; i <= c; i++) {
+            int brightness = (i + t) % (c + 1);
+            int amount = precomp[i][x2][y2] - precomp[i][x1 - 1][y2] - precomp[i][x2][y1 - 1] + precomp[i][x1 - 1][y1 - 1];
+            ans += amount * brightness;
+        }
+        return ans;
+	}
+
+}
