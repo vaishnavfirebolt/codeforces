@@ -1,0 +1,35 @@
+package prefixSum;
+
+import java.util.Scanner;
+
+public class Codeforces363B {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt() , k = sc.nextInt();
+		int a[] = new int[n];
+		a[0] = sc.nextInt();
+		for(int i = 1 ; i < n ; i++) {
+			a[i] = a[i-1] + sc.nextInt();
+		}
+		int ans = a[k-1];
+		int index = 1;
+		for(int i = k  ; i < n ; i++ ) {
+			
+//			System.out.println(a[i] + " " + a[i-k+1]);
+//			System.out.println(a[i] - a[i - k +1]);
+			if(a[i] - a[i - k] < ans) {
+				index = i-k+2;
+				ans = a[i] - a[i - k];
+//				if(i == 6) {
+//					System.out.println(index + " " + ans);
+//				}
+			}
+		}
+		System.out.println(index);
+		sc.close();
+		
+	}
+
+}
