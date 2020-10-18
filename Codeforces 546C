@@ -1,0 +1,41 @@
+package day69;
+
+import java.util.ArrayDeque;
+import java.util.Scanner;
+
+public class Codeforces546C {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int o = sc.nextInt();
+		ArrayDeque<Integer> q1 = new ArrayDeque<>();
+		for(int i = 0 ; i< o ; i++)q1.add(sc.nextInt());
+		
+		int p = sc.nextInt();
+		ArrayDeque<Integer> q2 = new ArrayDeque<>();
+		for(int i = 0 ; i< p ; i++)q2.add(sc.nextInt());
+		
+		for(int i = 0 ;i <110 ; i++) {
+			int a = q1.removeFirst();
+			int b = q2.removeFirst();
+			if(a > b) {
+				q1.add(b);
+				q1.add(a);
+			}else {
+				q2.add(a);
+				q2.add(b);
+			}
+			if(q1.isEmpty() || q2.isEmpty()) {
+				System.out.print(i+1+" ");
+				if(q1.isEmpty())System.out.println(2);
+				else System.out.println(1);
+				
+				return;
+			}
+		}
+		System.out.println(-1);
+		
+		sc.close();
+	}
+}
