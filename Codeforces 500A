@@ -1,0 +1,23 @@
+package dfsAndSimilar;
+
+import java.util.Scanner;
+
+public class Codeforces500A {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt() , target = sc.nextInt();
+		int a[] = new int[n];
+		for(int i= 0 ; i < n -1 ; i++)a[i] = sc.nextInt();
+		sc.close();
+
+		int i = 0;
+		while(i < n -1) {
+			i += a[i];
+			if(i == target -1) {
+				System.out.println("YES");
+				return;
+			}
+		}
+		System.out.println("NO");
+	}
+}
