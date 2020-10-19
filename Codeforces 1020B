@@ -1,0 +1,27 @@
+package dfsAndSimilar;
+
+import java.util.*;
+
+public class Codeforces1020B {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int a[] = new int[n+1];
+		for(int i = 1 ;i <= n ; i++)a[i] = sc.nextInt();
+		
+		for(int i =1; i <= n ; i++) {
+			Map<Integer , Boolean> map = new HashMap<>();
+			map.put(i, true);
+			int next = a[i];
+			while(!map.containsKey(next)) {
+				map.put(next, true);
+				next = a[next];
+			}
+			System.out.print(next + " ");
+		}
+		
+		
+		sc.close();
+	}
+}
