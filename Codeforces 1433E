@@ -1,0 +1,120 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.util.*;
+ 
+public class E {
+ 
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int n = sc.nextInt();
+		if(n == 2) {
+			System.out.println(1);
+			return;
+		}
+		BigInteger b = (calculateFactorial(n/2 -1));
+		long a = NcR(n,n/2) / 2;
+		BigInteger c = new BigInteger(a+"");
+		
+		b = b.multiply(b);
+		System.out.println(b.multiply(c));
+	}
+	static long NcR(int n, int r) { 
+        long p = 1, k = 1; 
+  
+        if (n - r < r) { 
+            r = n - r; 
+        } 
+  
+        if (r != 0) { 
+            while (r > 0) { 
+                p *= n; 
+                k *= r; 
+                long m =gcd(p, k); 
+                p /= m; 
+                k /= m; 
+  
+                n--; 
+                r--; 
+            } 
+  
+        } else { 
+            p = 1; 
+        } 
+  
+        return p; 
+    } 
+  
+    static long gcd(long n1, long n2) { 
+        long gcd = 1; 
+  
+        for (int i = 1; i <= n1 && i <= n2; ++i) { 
+            if (n1 % i == 0 && n2 % i == 0) { 
+                gcd = i; 
+            } 
+        } 
+        return gcd; 
+    } 
+	private static BigInteger calculateFactorial(int uptoValue) {
+        BigInteger answer=BigInteger.ONE;
+        boolean oddUptoValue=((uptoValue&1)==1);
+        int tempUptoValue=uptoValue;
+        if(oddUptoValue){
+            tempUptoValue=uptoValue-1;
+            }
+
+        int nextSum = tempUptoValue;
+        int nextMulti = tempUptoValue;
+        while (nextSum >= 2){
+            answer=answer.multiply(BigInteger.valueOf(nextMulti));
+            nextSum -= 2;
+            nextMulti += nextSum;
+        //  long product=(tempUptoValue-i+1L)*i;
+
+        }
+        if(oddUptoValue){
+            answer=answer.multiply(BigInteger.valueOf(uptoValue));
+        }
+        return answer;
+    }
+	
+	public void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
