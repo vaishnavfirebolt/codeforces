@@ -1,0 +1,24 @@
+package dfsAndSimilar;
+
+import java.util.*;
+
+public class Codeforces522A {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		Map<String , Integer> map = new HashMap<>();
+		int ans = 0;
+		map.put("polycarp",1);
+		for(int i= 0 ; i < n ; i++) {
+			String name1 = sc.next().toLowerCase();
+			sc.next();
+			String name2 = sc.next().toLowerCase();
+//			System.out.println(name1 + " " + name2);
+			map.put(name1 , map.get(name2) +1);
+			ans = Math.max(ans, map.get(name1));
+		}
+		System.out.println(ans);
+		sc.close();
+	}
+}
