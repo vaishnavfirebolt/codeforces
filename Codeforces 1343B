@@ -1,0 +1,34 @@
+package day70;
+
+import java.util.Scanner;
+
+public class Codeforces1343B {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt =0 ; tt< t; tt++) {
+			int n = sc.nextInt();
+			if(n%4 ==0) {
+				System.out.println("YES");
+				long sum = 0 ;
+				for(int i = 2 ; i <= n ; i+=2) {
+					System.out.print(i + " ");
+					sum += i;
+				}
+				long sum2 = 0;
+				int j =1;
+				for(int i = 1 ; i < n/2 ; i++) {
+					System.out.print(j + " ");
+					sum2 += j;
+					j += 2;
+				}
+				System.out.println(sum - sum2);
+			}else System.out.println("NO");
+		}
+		
+		
+		
+		sc.close();
+	}
+}
