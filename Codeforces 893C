@@ -1,0 +1,61 @@
+package dfsAndSimilar;
+
+import java.util.*;
+
+public class Codeforces893C {
+	static int a[];
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt() , m = sc.nextInt();
+		a = new int[n];
+		for(int i = 0 ; i< n ; i++)a[i] = sc.nextInt();
+		graph g = new graph(n);
+		for(int i = 0 ; i < m ; i++) {
+			g.addEdge(sc.nextInt() -1, sc.nextInt() -1);
+		}
+		System.out.println(g.dfs());
+		
+		sc.close();
+	}
+	static class graph{
+		int v ;
+		List<Integer> adj[];
+		
+		@SuppressWarnings("unchecked")
+		graph(int v){
+			this.v = v;
+			adj = new List[v];
+			for(int i =0 ; i < v ; i++) {
+				adj[i] = new ArrayList<Integer>();
+			}
+			
+		}
+		public void addEdge(int u , int v) {
+			adj[u].add(v);
+			adj[v].add(u);
+		}
+		public long dfs() {
+			boolean visited[] = new boolean[v];
+			long ans = 0;
+			for(int i = 0 ; i < v ; i++) {
+				if(!visited[i]) {
+					ans += dfsUtil(i , visited);
+				}
+			}
+			return ans;
+		}
+		public long dfsUtil(int src , boolean visited[]) {
+			visited[src] = true;
+			long min = a[src];
+			
+			for(int item : adj[src]) {
+				if(!visited[item]) {
+					min = Math.min(min, dfsUtil(item , visited));
+				}
+			}
+			return min;
+		}
+	}
+}
