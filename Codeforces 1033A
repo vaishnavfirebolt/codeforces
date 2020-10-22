@@ -1,0 +1,16 @@
+package day71;
+
+import java.util.Scanner;
+
+public class Codeforce1033A {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int qx = sc.nextInt() , qy = sc.nextInt();
+		int kx = sc.nextInt() , ky = sc.nextInt();
+		int tx = sc.nextInt() , ty = sc.nextInt();
+		
+		System.out.println(ty < qy == ky  < qy & tx < qx == kx < qx ?"YES":"NO");
+		sc.close();
+	}
+}
