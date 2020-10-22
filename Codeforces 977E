@@ -1,0 +1,46 @@
+package day71;
+
+import java.util.*;
+
+public class Codeforces977E {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt() , m = sc.nextInt();
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Integer> adj[] = new ArrayList[n];
+		for(int i =0 ; i < n ; i++) {
+			adj[i] = new ArrayList<>();
+		}
+		for(int i = 0 ; i < m ; i++) {
+			int u = sc.nextInt() - 1, v = sc.nextInt() - 1;
+			adj[u].add(v);
+			adj[v].add(u);
+		}
+		boolean visited[] = new boolean[n];
+		int ans = 0;
+		for(int i =0 ; i< n ; i++) {
+			if(!visited[i]) {
+				boolean valid = true;
+				Queue<Integer> q = new LinkedList<>();
+				q.offer(i);
+				visited[i] = true;
+				while(!q.isEmpty()) {
+					int current = q.poll();
+					valid &= adj[current].size() == 2;
+					for(int item : adj[current]) {
+						if(!visited[item]) {
+							q.offer(item);
+							visited[item] = true;
+						}
+					}
+				}
+				if(valid)ans++;
+			}
+		}
+		System.out.println(ans);
+		
+		sc.close();
+	}
+}
