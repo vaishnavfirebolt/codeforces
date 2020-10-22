@@ -1,0 +1,17 @@
+package day71;
+
+import java.util.Scanner;
+
+public class Codeforces1270A {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int tt=0;tt<t;tt++) {
+			int n=sc.nextInt(), a=sc.nextInt(), b=sc.nextInt();
+			int maxa=0, maxb=0;
+			for(int i=0;i<a;i++) maxa=Math.max(maxa,sc.nextInt());
+			for(int i=0;i<b;i++) maxb=Math.max(maxb,sc.nextInt());
+			System.out.println(maxa>maxb?"YES":"NO");
+		}
+	}
+}
