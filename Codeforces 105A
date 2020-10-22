@@ -1,0 +1,29 @@
+package day71;
+
+import java.util.*;
+
+public class Codeforces105A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		long n = sc.nextLong();
+		sc.close();
+		for(long i = 2 ; i * i <= n ; i++) {
+			if(n%i==0) {
+				long x = n/i;
+				for(long j = 2 ; j*j <= x ; j++) {
+					if(x % j == 0) {
+						System.out.println(1);
+						System.out.println(i * j);
+						return;
+					}
+				}
+				System.out.println(2);
+				return;
+			}
+		}
+		System.out.println(1+"\n"+0);
+		
+	}
+
+}
