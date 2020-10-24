@@ -1,0 +1,40 @@
+package day72;
+
+import java.util.Scanner;
+
+public class Codeforces1328C {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt = 0 ; tt < t ;tt++) {
+			int n = sc.nextInt();
+			char a[] = sc.next().toCharArray();
+			StringBuilder sb = new StringBuilder();
+			StringBuilder sba = new StringBuilder();
+			boolean haspreviousOne =false;
+			for(int i =0 ; i < n ; i++) {
+				if(!haspreviousOne) {
+					if(a[i] == '2') {
+						sb.append(1);
+						sba.append(1);
+					}else if(a[i] == '0') {
+						sb.append(0);
+						sba.append(0);
+					}else {
+						haspreviousOne = true;
+						sb.append(1);
+						sba.append(0);
+					}
+				}else {
+					sb.append(0);
+					sba.append(a[i]);
+				}
+			}
+			System.out.println(sb);
+			System.out.println(sba);
+		}
+		
+		sc.close();
+	}
+}
