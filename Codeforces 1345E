@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Codeforces1345E {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		StringBuilder sb = new StringBuilder();
+		
+		for(int tt = 0 ; tt < t ;tt++) {
+			long a = sc.nextInt() , b = sc.nextInt() , c = sc.nextInt() , d = sc.nextInt();
+			if (a > b * c) {
+	           sb.append(-1+"\n");
+	            continue;
+	        }
+	 
+	        long p = a / (d * b);
+	 
+	        long ans = (p + 1) * a;
+	        ans -= p * (p + 1) / 2 * d * b;
+	 
+	        sb.append(ans+"\n");
+		}
+		System.out.println(sb);
+	}
+}
