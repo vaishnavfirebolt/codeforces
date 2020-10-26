@@ -1,0 +1,60 @@
+package day73;
+
+import java.util.*;
+
+public class Codeforces1435D {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		
+		List<pair> list = new ArrayList<>();
+		for(int i = 0; i< n * 2 ; i++) {
+			char ch = sc.next().charAt(0);
+			if(ch == '+') {
+				list.add(new pair(ch,0));
+			}else {
+				list.add(new pair(ch,sc.nextInt()));
+			}
+		}
+		Collections.reverse(list);
+		Stack<Integer> stk = new Stack<>();
+		List<Integer> ans = new ArrayList<Integer>();
+		
+		boolean valid = true;
+		for(pair p : list) {
+			char c = p.ch;
+			int i = p.num;
+
+			if(c == '+') {
+				if(stk.isEmpty()) {
+					valid = false;
+					break;
+				}
+				ans.add(stk.peek());
+				stk.pop();
+			}else {
+				if(!stk.isEmpty() && stk.peek() < i) {
+					valid = false ; 
+					break;
+				}
+				stk.push(i);
+			}
+		}
+		if(valid) {
+			Collections.reverse(ans);
+			System.out.println("YES");
+			for(int i : ans) {
+				System.out.print(i + " ");
+			}
+		}else System.out.println("NO");
+		sc.close();
+	}
+	static class pair{
+		char ch ;
+		int num;
+		pair(char ch , int num){
+			this.ch = ch;
+			this.num = num;
+		}
+	}
+}
