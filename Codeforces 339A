@@ -1,0 +1,19 @@
+import java.util.*;
+ 
+public class a {
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Character> s = new ArrayList<Character>();
+        String x = scan.nextLine();
+        for(int i = 0; i < x.length(); i+=2){
+            s.add(x.charAt(i));
+        }
+        Collections.sort(s);
+        for(int i = 1; i < s.size(); i+=2){
+            s.add(i, '+');
+        }
+        for(Character c : s){
+            System.out.print(c);
+        }
+    }
+}
