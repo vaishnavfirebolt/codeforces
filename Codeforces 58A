@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class a {
+    static char[] hello = {'h', 'e', 'l', 'l', 'o'};
+    public static void main(String args[]) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.next();
+        int index = 0;
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == hello[index]) index++;
+            if(index == hello.length) break;
+        }
+        System.out.println(index == hello.length? "YES" : "NO");
+    }
+}
