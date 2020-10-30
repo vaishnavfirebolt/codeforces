@@ -1,0 +1,156 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+ 
+public class D {
+	
+	final static int MAXN = 100_005;
+	final static long MOD = (long) 1e9 + 7;
+
+ 
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		 int n = sc.nextInt(), k = sc.nextInt();
+		    long best = Long.MAX_VALUE;
+		    int[] a = new int[n];
+		    for(int i = 0; i < n; i++) a[i] = sc.nextInt();
+		    
+		    sort(a);
+		    for(int i = 1; i <= a[n-1]; i++) {
+		        long total = 0;
+		        int at = 0;
+		        for(int j = 0; j < n; j++) {
+                 long curr = a[j];
+                 long need = 0;
+                 while(curr > i) {
+                     curr /= 2;
+                     need++;
+                 }
+                 if(curr != i) continue;
+                 at++;
+                 total += need;
+                 if(at == k) break;
+		        }
+		        if(at != k) continue;
+		        best = Math.min(best, total);
+		    }
+		    System.out.println(best);
+	}
+	
+	public static void sort(int[] a) {
+		ArrayList<Integer> l=new ArrayList<>();
+		for (int i:a) l.add(i);
+		Collections.sort(l);
+		for (int i=0; i<a.length; i++) a[i]=l.get(i);
+	}
+
+    public static long[] factorial;
+ 
+    public static void setFactorial() {
+        factorial = new long[MAXN];
+        factorial[0] = 1;
+        for (int i = 1; i < MAXN; ++i) factorial[i] = factorial[i - 1] * i % MOD;
+    }
+ 
+    public static long getFactorial(int n) {
+        if (factorial == null) setFactorial();
+        return factorial[n];
+    }
+ 
+    public static long ncr(int n, int r) {
+        if (r > n) return 0;
+        if (factorial == null) setFactorial();
+        long numerator = factorial[n];
+        long denominator = factorial[r] * factorial[n - r] % MOD;
+        return numerator * pow(denominator, MOD - 2, MOD) % MOD;
+    }
+ 
+    public static long gcd(long a, long b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+ 
+    public static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+    public static long pow(long base, long exp, long MOD) {
+        base %= MOD;
+        long ret = 1;
+        while (exp > 0) {
+            if ((exp & 1) == 1) ret = ret * base % MOD;
+            base = base * base % MOD;
+            exp >>= 1;
+        }
+        return ret;
+    }
+ 
+ 
+    public static long max(long... ar) {
+        long ret = ar[0];
+        for (long itr : ar) ret = Math.max(ret, itr);
+        return ret;
+    }
+ 
+    public static int max(int... ar) {
+        int ret = ar[0];
+        for (int itr : ar) ret = Math.max(ret, itr);
+        return ret;
+    }
+ 
+    public static long min(long... ar) {
+        long ret = ar[0];
+        for (long itr : ar) ret = Math.min(ret, itr);
+        return ret;
+    }
+ 
+    public static int min(int... ar) {
+        int ret = ar[0];
+        for (int itr : ar) ret = Math.min(ret, itr);
+        return ret;
+    }
+ 
+ 
+    public static long sum(long... ar) {
+        long sum = 0;
+        for (long itr : ar) sum += itr;
+        return sum;
+    }
+ 
+    public static long sum(int... ar) {
+        long sum = 0;
+        for (int itr : ar) sum += itr;
+        return sum;
+    }
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
