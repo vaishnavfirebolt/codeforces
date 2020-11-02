@@ -1,0 +1,27 @@
+import java.util.Arrays;
+import java.util.Scanner;
+ 
+public class A {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int numCoins = sc.nextInt();
+		String coinValues = sc.nextLine();
+		int[] x = new int[numCoins];
+		int total = 0;
+		int money = 0;
+		int coinsTaken = 0;
+		for (int i = 0; i < numCoins; i++) {
+			x[i] = sc.nextInt();
+			total += x[i];
+		}
+		int half = (int) Math.ceil(total / 2);
+		Arrays.sort(x);
+		int i = numCoins - 1;
+		while (i >= 0 && money <= half) {
+			money += x[i];
+			coinsTaken += 1;
+			i--;
+		}
+		System.out.println(coinsTaken);
+	}
+}
