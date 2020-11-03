@@ -1,0 +1,14 @@
+import java.util.Scanner;
+ 
+public class a {
+ 
+	public static void main(String[] args) {
+	    
+		Scanner sc = new Scanner(System.in);
+		int[] x = new int[(Math.min(sc.nextInt() + 2, 2))];
+		for(char c : sc.next().toCharArray()) x[Math.min(c-'A', 1)]++;
+		System.out.println(x[0] == x[1] ? "Friendship" : x[0] > x[1] ? "Anton" : "Danik");
+		sc.close();
+	}
+ 
+}
