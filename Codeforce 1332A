@@ -1,0 +1,35 @@
+// package day73;
+
+import java.util.Scanner;
+
+public class Codeforces1332A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+outer:	for(int tt= 0;tt<t;tt++) {
+			int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt(), d = sc.nextInt();
+            int x = sc.nextInt(), y = sc.nextInt(), x1 = sc.nextInt(), y1 = sc.nextInt(), x2 = sc.nextInt(), y2 = sc.nextInt();
+            int h = b - a, v = d - c;
+            if(h + x >= x1 && h + x <= x2 && v + y >= y1 && v + y <= y2) {
+                if(h == 0) {
+                    if(a > 0 && x - 1 < x1 && x + 1 > x2) {
+                        System.out.println("NO");
+                        continue outer;
+                    }
+                }
+                if(v == 0) {
+                    if(d > 0 && y - 1 < y1 && y + 1 > y2) {
+                    	System.out.println("NO");
+                    	 continue outer;
+                    }
+                }
+                System.out.println("YES");
+            }
+            else System.out.println("NO");
+        }
+		sc.close();
+	}
+
+}
