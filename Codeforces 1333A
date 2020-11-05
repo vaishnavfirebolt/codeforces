@@ -1,0 +1,28 @@
+package day74;
+
+import java.util.*;
+
+public class Codeforces1333A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt= 0;tt<t;tt++) {
+			int n = sc.nextInt() ,  m = sc.nextInt();
+			System.out.print("W");
+            for (int i = 1; i < m; i++) {
+            	System.out.print("B");
+            }
+            System.out.println();
+            for (int i = 1; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                	System.out.print("B");
+                }
+                System.out.println();
+            }
+		}
+		sc.close();
+	}
+
+}
