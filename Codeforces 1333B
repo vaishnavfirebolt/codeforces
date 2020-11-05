@@ -1,0 +1,35 @@
+package day74;
+
+import java.util.*;
+
+public class Codeforces1333B {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+outer:	for(int tt =0 ; tt < t ;tt++) {
+			int n = sc.nextInt();
+            long[] a = new long[n];
+            long[] sub = new long[n];
+            boolean[] havePos = new boolean[n], haveNeg = new boolean[n];
+            for(int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
+                havePos[i] = (i > 0 && a[i - 1] > 0) || (i > 0 && havePos[i - 1]);
+                haveNeg[i] = (i > 0 && a[i - 1] < 0) || (i > 0 && haveNeg[i - 1]);
+            }
+            for(int i = 0; i < n; i++) sub[i] = sc.nextInt() - a[i];
+            for(int i = 0; i < n; i++) {
+                if((sub[i] > 0 && !havePos[i]) || (sub[i] < 0 && !haveNeg[i])) {
+                    System.out.println("NO");
+                    continue outer;
+                }
+            }
+            System.out.println("YES");
+        }
+		
+		
+		sc.close();
+	}
+
+}
