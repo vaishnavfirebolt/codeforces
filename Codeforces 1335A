@@ -1,0 +1,19 @@
+package day75;
+
+import java.util.Scanner;
+
+public class Codeforces1335A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt =0 ;tt < t;tt++) {
+			int  n = sc.nextInt();
+			System.out.println((n + 1)/2 - 1);
+		}
+		
+		sc.close();
+	}
+
+}
