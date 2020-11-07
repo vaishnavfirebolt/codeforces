@@ -1,0 +1,28 @@
+package day76;
+
+import java.util.Scanner;
+
+public class Codeforces1352C {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt= 0;tt<t ;tt++) {
+			int n = sc.nextInt() ; int k = sc.nextInt();
+			int p = 0;
+			p = k / (n-1);
+//			System.out.println(p);
+			int remainder = k % (n-1);
+			int ans = remainder + ((n - 1) * p) +  p;
+			if( k % (n-1) == 0) {
+				ans -= 1;
+			}
+			System.out.println(ans);
+		}
+		
+		
+		sc.close();
+	}
+
+}
