@@ -1,0 +1,43 @@
+package day1;
+
+import java.util.Scanner;
+
+public class Codeforces401C {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt() , m = sc.nextInt();
+		StringBuilder sb = new StringBuilder();
+		if(check(n , m)) {
+			for(int i = 0 ; i < 2 ; i++) {
+				if(m > 2*n) {
+					sb.append(1);
+					m--;
+				}
+			}
+			while(m + n > 0) {
+				sb.append(0);
+				n--;
+				if(m > 0) {
+					sb.append(1);
+					m--;
+				}
+				if(m > 2 * n) {
+					sb.append(1);
+					m--;
+				}
+			}
+		}
+		System.out.println(sb);
+		sc.close();
+	}
+
+	private static boolean check(int n, int m) {
+		
+		if(n > m+1 || m > 2 * n + 2) {
+			System.out.println(-1);
+			return false;
+		}
+		return true;
+	}
+}	
