@@ -1,0 +1,40 @@
+package day1;
+
+import java.util.Scanner;
+
+public class Codeforces466C {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int a[] = new int[n];
+		long sum = 0;
+		for(int i = 0 ; i < n ; i++) {
+			int p = sc.nextInt();
+			a[i] = p;
+			sum += p;
+		}
+		sc.close();
+		if(sum % 3 != 0 ) {
+			System.out.println(0);
+			return;
+		}
+		
+		sum = sum/3;
+		long sum1 = 0;
+		long ans = 0;
+		int additional = 0;
+	
+		for (int i=0; i+1<n; i++) {
+			sum1 += a[i];
+			if (sum1 == 2*sum) {
+				ans += additional;
+			}
+			if (sum1 == sum) additional++;
+		}
+		System.out.println(ans);
+		
+	}
+		
+}
