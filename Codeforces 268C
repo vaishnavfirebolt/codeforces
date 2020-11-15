@@ -1,0 +1,26 @@
+package day2;
+
+import java.util.Scanner;
+
+public class Codeforces268C {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt(),  m = sc.nextInt();
+		int count = 0 ;
+		int l = 0 ; int r = m;
+		StringBuilder sb = new StringBuilder();
+		while(l <= n && r >= 0) {
+			sb.append(l + " " + r + "\n");
+			l++;
+			r--;
+			count++;
+		}
+		System.out.println(count);
+		System.out.println(sb);
+		
+		sc.close();
+	}
+
+}
