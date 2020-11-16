@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class Codeforces133A {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		String s = scan.nextLine();
+		System.out.println(s.contains("H") || s.contains("Q") || s.contains("9") ? "YES" : "NO");
+	}
+
+}
