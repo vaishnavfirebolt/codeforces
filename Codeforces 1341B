@@ -1,0 +1,40 @@
+package day3;
+
+import java.util.Scanner;
+
+public class Codeforces1341B {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt = 0 ;tt < t;tt++) {
+			int n = sc.nextInt(), k = sc.nextInt();
+            long[] a = new long[n], prefix = new long[n];
+            for(int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
+            }
+            for(int i = 1; i < n - 1; i++) {
+                if(a[i] > a[i - 1] && a[i] > a[i + 1]) prefix[i]++;
+                prefix[i] += prefix[i - 1];
+            }
+            prefix[n - 1] = prefix[n - 2];
+            long best = -1, ans = -1;
+            for(int i = 0; i < n; i++) {
+                int next = i + k - 1;
+                if(next >= n) break;
+                if(next - 1 >= i) {
+                    long curr = prefix[next - 1] - prefix[i] + 1;
+                    if(curr > best) {
+                        best = curr;
+                        ans = i + 1;
+                    }
+                }
+            }
+            System.out.printf("%d %d\n", best, ans);
+		}
+		
+		sc.close();
+	}
+
+}
