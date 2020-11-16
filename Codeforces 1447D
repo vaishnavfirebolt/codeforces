@@ -1,0 +1,42 @@
+package day3;
+
+import java.util.Scanner;
+
+public class Codeforces1447D {
+	
+	static Integer dp[][];
+	static char a[] , b[];
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int p = sc.nextInt() , q = sc.nextInt() ;
+		a = sc.next().toCharArray();
+		b = sc.next().toCharArray();
+		
+		dp = new Integer[p][q];
+		
+		int ans = 0;
+		for (int i = p - 1; i >=0 ; i--) {
+			for (int j = q - 1; j >= 0 ; j--) {
+				ans = Math.max(ans, go(i, j));
+			}
+		}
+		System.out.println(ans);
+		
+		sc.close();
+	}
+	
+	static int go(int i , int j) {
+		if(i == a.length || j == b.length)return 0;
+		if(dp[i][j] != null)return dp[i][j];
+		int best = 0;
+		
+		best = Math.max(best, -1 + go(i+1, j));
+		best = Math.max(best, -1 + go(i, j+1));
+		if (a[i] == b[j]) {
+			best = Math.max(best, 2 + go(i+1, j+1));
+		}
+		
+		return dp[i][j] = best;
+	}
+}
