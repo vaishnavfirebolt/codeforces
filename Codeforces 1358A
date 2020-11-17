@@ -1,0 +1,17 @@
+package day4;
+
+import java.util.Scanner;
+
+public class Codeforces1358A {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int t = sc.nextInt();
+		for(int tt =0 ;tt<t;tt++) {
+			int n = sc.nextInt() , m = sc.nextInt();
+			System.out.println(((n*m)+1)/2);
+		}
+		
+		sc.close();
+	}
+}
