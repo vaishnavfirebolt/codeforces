@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class Codeforces136A {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        
+        int[] a = new int[sc.nextInt()];
+        for(int i = 0; i < a.length; i++) a[sc.nextInt()-1] = i + 1;
+        for(int i : a) System.out.print(i + " ");
+    }
+}
