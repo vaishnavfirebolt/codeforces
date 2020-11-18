@@ -1,0 +1,19 @@
+import java.util.*;
+ 
+public class Codeforces467A{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+ 
+        int rooms = sc.nextInt();
+        int free = 0;
+        for(int i = 0; i < rooms; i++){
+            int people = sc.nextInt();
+            int max = sc.nextInt();
+            if(max - people >= 2)
+            {
+                free++;
+            }
+        }
+        System.out.println(free);
+    }
+}
