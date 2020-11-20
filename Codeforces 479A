@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Codeforces479A {
+    
+    static int a, b, c;
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        a = sc.nextInt(); b = sc.nextInt(); c = sc.nextInt();
+        System.out.println(Math.max(p(), Math.max(r(), q())));
+    }
+    
+    static int p () {
+        return Math.max(a+(b*c), c+(b*a));
+    }
+    static int r () {
+        return Math.max(a*(b+c), c*(b+a));
+    }
+    static int q () {
+        return Math.max(a*b*c, a+b+c);
+    }
+}
