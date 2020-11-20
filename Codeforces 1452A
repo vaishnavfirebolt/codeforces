@@ -1,0 +1,19 @@
+package day5;
+
+import java.util.Scanner;
+
+public class Codeforces1452A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		for(int tt =0 ;tt <t;tt++) {
+			int n = sc.nextInt() , m = sc.nextInt();
+			if(n == m)System.out.println(2*n);
+			else System.out.println(Math.max(n, m)*2 - 1);
+		}
+		
+		sc.close();
+	}
+
+}
