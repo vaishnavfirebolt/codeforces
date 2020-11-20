@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class Codeforces1030A {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int x = sc.nextInt();
+		sc.nextLine();
+		System.out.println(sc.nextLine().contains("1") ? "HARD" : "EASY");
+
+	}
+
+}
