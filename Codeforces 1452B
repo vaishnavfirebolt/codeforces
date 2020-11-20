@@ -1,0 +1,27 @@
+package day5;
+
+import java.util.*;
+
+public class Codeforces1452B {
+
+	public static void main(String[] args) {
+		 Scanner sc = new Scanner(System.in);
+		 int t = sc.nextInt();
+		 while (t-- > 0) {
+			 int n = sc.nextInt();
+			 ArrayList<Integer> arr = new ArrayList<>(n);
+			 long sum = 0;
+			 for (int i = 0; i < n; ++i) {
+				 arr.add(sc.nextInt());
+				 sum += arr.get(i);
+	         }
+			 Collections.sort(arr);
+			 int max = arr.get(n - 1);
+			 long x = (sum + n - 2) / (n - 1);
+			 x = Math.max(x, max);
+			 System.out.println((n - 1) * x - sum);
+	    }
+		sc.close();
+	}
+
+}
