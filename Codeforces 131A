@@ -1,0 +1,13 @@
+import java.util.Scanner;
+public class Codeforces131A {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        if(s.substring(1).toUpperCase().equals(s.substring(1))) {
+            boolean b = false;
+            if(Character.isLowerCase(s.charAt(0))) b = true;
+            System.out.println(!b ? s.toLowerCase() : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase());
+        }
+        else System.out.println(s);
+    }
+}
