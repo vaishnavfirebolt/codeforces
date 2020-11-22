@@ -1,0 +1,27 @@
+package day6;
+
+import java.util.Scanner;
+
+public class Codeforces1451D {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		for(int tt = 0 ;tt < t ;tt++) {
+			long d = sc.nextLong();
+			d*=d;
+			long k = sc.nextLong();
+			int curr = 0;
+			while(isWithin(curr+1 , curr+1 , d , k)) {
+				curr++;
+			}
+			if(isWithin(curr+1 , curr , d , k)) {
+				System.out.println("Ashish");
+			}else System.out.println("Utkarsh");
+		}
+		sc.close();
+	}
+	static boolean isWithin(long x , long y , long d , long k) {
+		return d - k*k*x*x - k*k*y*y >= 0;
+	}
+}
