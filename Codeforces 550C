@@ -1,0 +1,60 @@
+package day6;
+
+import java.util.Scanner;
+
+public class Codeforces550C {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String s = sc.next();
+		boolean valid = false ;
+		int ans = -1;
+		
+		for(int i = 0; i < s.length() ; i++) {
+			if(s.charAt(i) == '0' || s.charAt(i) == '8') {
+				valid = true;
+				ans = Integer.parseInt(s.charAt(i)+"") ;
+				break;
+			}
+		}
+		if(valid == false) {
+			for(int i = 0 ; i < s.length() ; i++) {
+				for(int j = i+1 ; j < s.length() ; j++) {
+					 int num = (s.charAt(i) - '0') * 10 + (s.charAt(j) - '0');
+					 if(num%8 == 0) {
+						 valid = true;
+						 ans = num;
+						 break;
+					 }
+				}
+				if(valid)break;
+			}
+		}
+		if(valid == false) {
+			for(int i = 0; i < s.length() - 2; i++) {
+                for(int j = i + 1; j < s.length() - 1; j++) {
+                    for(int k = j + 1; k < s.length(); k++) {
+                        int num = (s.charAt(i) - '0') * 100 + (s.charAt(j) - '0') * 10 + (s.charAt(k) - '0');
+                        if(num%8 == 0) {
+   						 valid = true;
+   						 ans = num;
+   						 break;
+                        }
+                    }
+                    if(valid)break;
+                }
+                if(valid)break;
+            }
+		}
+		
+		if(valid) {
+			System.out.println("YES");
+			System.out.println(ans);
+		}
+		else System.out.println("NO");
+		
+		sc.close();
+	}
+
+}
