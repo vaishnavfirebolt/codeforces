@@ -1,0 +1,37 @@
+package day6;
+
+import java.util.Scanner;
+
+public class Codeforces545C {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+			int n = sc.nextInt();
+			int a[] = new int[n] , h[] = new int[n];
+			for(int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
+                h[i] = sc.nextInt();
+            }
+			int ans = 1, prev = a[0];
+            boolean right = false;
+            for(int i = 1; i < n; i++) {
+                right = false;
+                if(a[i] - h[i] > prev) {
+                    ans++;
+                }
+                else if(i < n - 1 && a[i] + h[i] < a[i + 1]) {
+                    ans++;
+                    right = true;
+                }
+                else if(i == n - 1) {
+                    ans++;
+                }
+                prev = right ? a[i] + h[i] : a[i];
+            }
+            System.out.println(ans);
+		
+		sc.close();
+	}
+
+}
