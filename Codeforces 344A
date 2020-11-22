@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Codeforces344A{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        char[] c = new char[n * 2];
+        for(int i = 0; i < n * 2; i += 2) {
+            String s = sc.next();
+            for(int j = 0; j < 2; j++) {
+                c[i + j] = s.charAt(j);
+            }
+        }
+        int ans = 0;
+        for(int i = 0; i < n * 2; i++) {
+            if(i == 0 || c[i] == c[i - 1]) {
+                ans++;
+            }
+        }
+        System.out.println(ans);
+    }
+}
