@@ -1,0 +1,29 @@
+package day6;
+
+import java.util.*;
+
+public class Codeforces1253C {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		StringBuilder sb = new StringBuilder();
+		int n = sc.nextInt() , mpd = sc.nextInt();
+		ArrayList<Integer> list = new ArrayList<>();
+		for(int i = 0; i< n ; i++)list.add(sc.nextInt());
+		Collections.sort(list);
+		long ans[] = new long[n];
+		long cSum = 0;
+		for (int lastTaken = 0; lastTaken < n; ++lastTaken) {
+			cSum += list.get(lastTaken);
+			ans[lastTaken] = cSum;
+			
+			if (lastTaken >= mpd) {
+				ans[lastTaken] += ans[lastTaken - mpd];
+		    }
+			sb.append(ans[lastTaken] +""+(lastTaken == n-1 ? '\n' : ' ' ));
+		 }
+		System.out.println(sb);
+		sc.close();
+	}
+
+}
