@@ -1,0 +1,47 @@
+package day6;
+
+import java.util.*;
+
+public class Codeforces1392D {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);	
+		int t = sc.nextInt();
+		for(int tt =0 ;tt< t;tt++) {
+			int n = sc.nextInt();
+			char a[]  = sc.next().toCharArray();
+			boolean allSame = true;
+			for(int i = 1 ; i < n ;  i++) {
+				if(a[i] != a[i-1]) {
+					allSame = false;
+					break;
+				}
+			}
+			if(allSame) {
+				System.out.println((n+2)/3);
+			}
+			ArrayList<Integer> list = new ArrayList<>();
+			int last = 0;
+			int count = 1;
+			
+			for(int i =1 ; i < n ; i++) {
+				if(a[i] == a[last]) {
+					count++;
+				}else {
+					list.add(count);
+					last = i;
+					count = 1;
+				}
+			}
+			
+			if(a[n-1] == a[0] && !list.isEmpty()) {
+				list.set(0 , list.get(0)+count);
+			}else list.add(count);
+			
+			int sum = 0;
+            for(int i: list) sum+=(i/3);
+            System.out.println(sum);
+		}
+		sc.close();
+	}
+}
