@@ -1,0 +1,31 @@
+package day7;
+
+
+import java.io.PrintWriter;
+import java.util.Scanner;
+ 
+public class Codeforces1327C {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		PrintWriter out=new PrintWriter(System.out);
+ 
+		int n=sc.nextInt(), m=sc.nextInt(), k=sc.nextInt();
+		StringBuilder res=new StringBuilder();
+		for(int i=0;i<n-1;i++) {
+			res.append("D");
+		}
+		for(int i=0;i<m-1;i++) {
+			res.append("R");
+		}
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<m-1;j++) {
+				if(i%2==0) res.append("L");
+				else res.append("R");
+			}
+			if(i<n-1) res.append("U");
+		}
+		out.println(res.length());
+		out.println(res);
+		out.close();
+	}
+}
