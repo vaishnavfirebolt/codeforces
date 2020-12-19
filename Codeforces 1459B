@@ -1,0 +1,20 @@
+import java.util.*;
+
+public class B{
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int a = n/2 ;
+		int b = (n +1 )/2 ;
+		int ans = (a+1) * (b+1);
+		if((n&1) == 1) {
+			ans *= 2;
+		}
+		System.out.println(ans);
+		
+		sc.close();
+	}
+	
+}
