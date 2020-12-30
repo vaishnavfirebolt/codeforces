@@ -1,0 +1,130 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
+ 
+public class D {
+	
+	final static int MAXN = 100_005;
+	final static long MOD = (long) 1e9 + 7;
+	
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int t = sc.nextInt();
+outer:		for(int tt= 0;tt< t;tt++) {
+			int n = sc.nextInt();
+			int a[] = sc.readArray(n);
+			List<Integer> adj[] = new List[n];
+			for(int i = 0 ; i < n ; i++) {
+				adj[i] = new ArrayList<>();
+			}
+			for(int i = 0 ; i < n -1 ; i++) {
+				int u = sc.nextInt() -1; int v = sc.nextInt() - 1;
+				adj[u].add(v);
+				adj[v].add(u);
+			}
+			if(n == 2) {
+				System.out.println(a[0] + a[1]);
+				continue outer;
+			}
+			List<pair> list = new ArrayList<>();
+			for(int i = 0 ; i < n ; i++) {
+				if(adj[i].size() > 1) {
+					list.add(new pair(i , a[i]));
+				}
+			}
+			long ans[] = new long[n - 1];
+			long sum = sum(a);
+			
+			long prefix[] = new long[n-1];
+			Collections.sort(list , Collections.reverseOrder());
+			int index = 0;
+			int listIndex = 0;
+			while(index < n-1 && listIndex < list.size()) {
+				for(int i = 1 ; i < adj[list.get(listIndex).index].size() ; i++) {
+					if(index == n-1) {
+						break;
+					}
+					prefix[index] = list.get(listIndex).weight;
+					index++;
+				}
+				listIndex++;
+			}
+//			for(long i : prefix) {
+//				System.out.println(i);
+//			}
+			ans[0] = sum;
+			for(int i = 1 ; i < n -1 ; i++) {
+				prefix[i] = prefix[i-1] + prefix[i];
+			}
+			for(int i = 1 ; i < n - 1 ; i++) {
+				ans[i] = sum + prefix[i-1];
+			}
+			for(long i : ans) {
+				System.out.print(i + " ");
+			}
+			System.out.println();
+		}
+	}
+	static class pair implements Comparable<pair>{
+		int index;
+		int weight;
+		
+		pair(int index , int weight){
+			this.index = index;
+			this.weight = weight;
+		}
+		@Override
+		public int compareTo(pair o) {
+			return this.weight - o.weight;
+		}
+		
+	}
+ 
+    public static long sum(long... ar) {
+        long sum = 0;
+        for (long itr : ar) sum += itr;
+        return sum;
+    }
+ 
+    public static long sum(int... ar) {
+        long sum = 0;
+        for (int itr : ar) sum += itr;
+        return sum;
+    }
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
