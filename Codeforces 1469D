@@ -1,0 +1,67 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+ 
+public class D {
+	
+	public static void main(String[] args) {
+		FastScanner sc = new FastScanner();
+		int t = sc.nextInt();
+		for(int tt= 0;tt< t;tt++) {
+			int n = sc.nextInt();
+			int last = n ;
+			ArrayList<Integer> first = new ArrayList<>() , second = new ArrayList<Integer>();
+			for(int i = n-1 ; i > 2 ; i--) {
+				while (i*(long)i<=n) {
+					n=(n+i-1)/i;
+					first.add(last);
+					second.add(i);
+				}
+				first.add(i);
+				second.add(last);
+			}
+			while (n>1) {
+				n=(n+1)/2;
+				first.add(last);
+				second.add(2);
+			}
+			System.out.println(first.size());
+			for (int i=0; i<first.size(); i++) {
+				System.out.println(first.get(i)+" "+second.get(i));
+			}
+		}
+	}
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		
+		public String next() {
+			while (!st.hasMoreElements())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+		
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+	}
+ 
+}
+
+
